@@ -19,6 +19,9 @@ TEMP_FILE="gpf_data_temp.json"
 TEMP_TEMP_FILE="gpf_data_temp_temp.json"
 MONTHLY_FILE="gpf_data_monthly.json"
 
+# Metadata
+METADATA_FILE="gpf_data_metadata.json"
+
 echo "Starting GPF data crawler..."
 
 # Check if jq is installed
@@ -95,6 +98,36 @@ fetch_api_data() {
   return 0
 }
 
+# Find date of newest local entry & update metadata file
+find_newest_local () {
+
+  # Get newest local date (convert DD/MM/YYYY hh:mm:ss to YYYY-MM-DD hh:mm:ss for comparison)
+  local newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$day, $month, $year] | "\($year)-\($month)-\($day) \($time)"] | sort | .[-1]' "$LOCAL_FILE")
+  echo "Latest local date: $newest_local"
+
+  if [ ! -f "$METADATA_FILE" ]; then
+    jq -n --arg nl "$newest_local" '{"newest_local": $nl}' > $METADATA_FILE
+    if [ $? -eq 0 ]; then
+      echo "No metadata file existed, successfully created new metadata file with updated value(s)"
+      return 0
+    else
+      echo "No metadata file existed, failed to create new metadata file"
+      return 1
+    fi
+  else
+    jq -n --arg nl "$newest_local" '.newest_local = $nl' $METADATA_FILE > "${METADATA_FILE}.tmp"
+    if [ $? -eq 0 ]; then
+      mv "${METADATA_FILE}.tmp" "$METADATA_FILE"
+      echo "Successfully updated metadata file"
+      return 0
+    else
+      echo "Failed to update metadata file"
+      rm -f "${METADATA_FILE}.tmp"
+      return 1
+    fi
+  fi
+}
+
 # Check if this is the first run
 if [ ! -f "$LOCAL_FILE" ]; then
   echo "Local file doesn't exist. Creating initial file with all API data..."
@@ -104,24 +137,32 @@ if [ ! -f "$LOCAL_FILE" ]; then
     mv "$TEMP_FILE" "$LOCAL_FILE"
     entry_count=$(jq 'length' "$LOCAL_FILE")
     echo "Successfully created $LOCAL_FILE with $entry_count entries"
+
+    # Find and update date of newest local entry
+    find_newest_local
+
   else
     echo "Failed to create initial file"
     exit 1
   fi
 
 else
-  
-  echo "Local file exists. Checking for new entries..."
 
-  # Get newest local date (convert DD/MM/YYYY hh:mm:ss to YYYY-MM-DD hh:mm:ss for comparison)
-  newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$day, $month, $year] | "\($year)-\($month)-\($day) \($time)"] | sort | .[-1]' "$LOCAL_FILE")
+  echo "Local file exists."
+
+  # Query stored date of newest local entry, find if not existed
+  if [ ! -f "$METADATA_FILE" ]; then
+    find_newest_local
+  fi
+  newest_local=$(jq -r '.newest_local' $METADATA_FILE)
   newest_local_year=${newest_local:0:4}
   newest_local_month=${newest_local:5:2}
   echo "Latest local date: $newest_local"
 
   # Query data since latest month in local file
+  echo "Checking for new entries..."
   if fetch_api_data $newest_local_month $newest_local_year; then
-    
+
     # Filter API data for entries newer than newest_local
     new_entries=$(jq --arg newest_local "$newest_local" '
       [.[] | select(
@@ -133,7 +174,7 @@ else
 
     # Check if we found new entries
     new_count=$(echo "$new_entries" | jq 'length')
-    
+
     if [ "$new_count" -gt 0 ]; then
       echo "Found $new_count new entries"
 
@@ -147,6 +188,10 @@ else
         # Show total count
         total_count=$(jq 'length' "$LOCAL_FILE")
         echo "Total entries in local file: $total_count"
+
+        # Find and update date of newest local entry
+        find_newest_local
+
       else
         echo "Error: Failed to merge new entries"
         rm -f "${LOCAL_FILE}.tmp"
