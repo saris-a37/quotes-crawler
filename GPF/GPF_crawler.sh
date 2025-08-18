@@ -1,0 +1,167 @@
+#!/bin/bash
+
+# GPF Data Crawler Script
+# Updates local JSON file with new entries from Thai GPF API
+
+# Local JSON
+LOCAL_FILE="gpf_data.json"
+
+# Thai GPF API URLs
+API_URL=
+declare -A API_URLs
+API_URL_ORIGIN="https://www.gpf.or.th"
+API_URL_PATH="/thai2019/About/memberfund-api.php"
+API_URL_SEARCH_BASE="?pageName=NAVBottom_"
+API_URL_BASE="${API_URL_ORIGIN}${API_URL_PATH}${API_URL_SEARCH_BASE}"
+
+# Temporary files
+TEMP_FILE="gpf_data_temp.json"
+TEMP_TEMP_FILE="gpf_data_temp_temp.json"
+MONTHLY_FILE="gpf_data_monthly.json"
+
+echo "Starting GPF data crawler..."
+
+# Check if jq is installed
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. Please install jq first."
+  exit 1
+fi
+
+# Function to fetch API data with error checking
+fetch_api_data() {
+
+  # Input month-year query range
+  local startmonth=$1
+  local startyear=$2
+  local endmonth=`date +"%m"`
+  local endyear=`date +"%Y"`
+
+  # Reset API URLs list
+  API_URLs=()
+
+  # Loop through years then months to generate API URLs list within query range
+  if [[ startyear -ne endyear ]]; then
+    year=$startyear
+    for ((month=$((10#$startmonth));month<=12;month++)); do
+      printf -v monthyearstring "%02d_%04d" $month $year
+      API_URL="${API_URL_BASE}${monthyearstring}"
+      API_URLs["$monthyearstring"]=$API_URL
+    done
+    for ((year=startyear+1;year<endyear;year++)); do
+      for ((month=1;month<=12;month++)); do
+        printf -v monthyearstring "%02d_%04d" $month $year
+        API_URL="${API_URL_BASE}${monthyearstring}"
+        API_URLs["$monthyearstring"]=$API_URL
+      done
+    done
+    year=$endyear
+    for ((month=1;month<=$((10#$endmonth));month++)); do
+      printf -v monthyearstring "%02d_%04d" $month $year
+      API_URL="${API_URL_BASE}${monthyearstring}"
+      API_URLs["$monthyearstring"]=$API_URL
+    done;
+  else
+    year=$startyear
+    for ((month=$((10#$startmonth));month<=$((10#$endmonth));month++)); do
+      printf -v monthyearstring "%02d_%04d" $month $year
+      API_URL="${API_URL_BASE}${monthyearstring}"
+      API_URLs["$monthyearstring"]=$API_URL
+    done
+  fi
+
+  # Create temporary JSON file with the same format as in API using 03_1997 data as dummy
+  curl -s "https://www.gpf.or.th/thai2019/About/memberfund-api.php?pageName=NAVBottom_03_1997" > "$TEMP_FILE"
+
+  # Fetch data from API and append to temporary JSON
+  for month_year in "${!API_URLs[@]}"; do
+    echo "Fetching data from API..."
+    if curl -s "${API_URLs[$month_year]}" > "$MONTHLY_FILE"; then
+      # Check if response is valid JSON
+      if jq empty "$MONTHLY_FILE" 2>/dev/null; then
+        echo "API data fetched successfully"
+        cp "$TEMP_FILE" "$TEMP_TEMP_FILE"
+        jq -s add "$TEMP_TEMP_FILE" "$MONTHLY_FILE" > "$TEMP_FILE"
+      else
+        echo "Error: API returned invalid JSON"
+        rm -f "$MONTHLY_FILE" "$TEMP_FILE"
+        return 1
+      fi
+    else
+      echo "Error: Failed to fetch data from API"
+      rm -f "$MONTHLY_FILE" "$TEMP_FILE"
+      return 1
+    fi
+  done
+  return 0
+}
+
+# Check if this is the first run
+if [ ! -f "$LOCAL_FILE" ]; then
+  echo "Local file doesn't exist. Creating initial file with all API data..."
+
+  # Initiate local file with entire data since 03_1997 for the first run
+  if fetch_api_data 03 1997; then
+    mv "$TEMP_FILE" "$LOCAL_FILE"
+    entry_count=$(jq 'length' "$LOCAL_FILE")
+    echo "Successfully created $LOCAL_FILE with $entry_count entries"
+  else
+    echo "Failed to create initial file"
+    exit 1
+  fi
+
+else
+  
+  echo "Local file exists. Checking for new entries..."
+
+  # Get newest local date (convert DD/MM/YYYY hh:mm:ss to YYYY-MM-DD hh:mm:ss for comparison)
+  newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$day, $month, $year] | "\($year)-\($month)-\($day) \($time)"] | sort | .[-1]' "$LOCAL_FILE")
+  newest_local_year=${newest_local:0:4}
+  newest_local_month=${newest_local:5:2}
+  echo "Latest local date: $newest_local"
+
+  # Query data since latest month in local file
+  if fetch_api_data $newest_local_month $newest_local_year; then
+    
+    # Filter API data for entries newer than newest_local
+    new_entries=$(jq --arg newest_local "$newest_local" '
+      [.[] | select(
+        (.LAUNCH_DATE | split(" ") as [$date, $time] |
+         ($date | split("/")) as [$day, $month, $year] |
+         "\($year)-\($month)-\($day) \($time)") > $newest_local
+      )]
+    ' "$TEMP_FILE")
+
+    # Check if we found new entries
+    new_count=$(echo "$new_entries" | jq 'length')
+    
+    if [ "$new_count" -gt 0 ]; then
+      echo "Found $new_count new entries"
+
+      # Merge with existing data
+      jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
+
+      if [ $? -eq 0 ]; then
+        mv "${LOCAL_FILE}.tmp" "$LOCAL_FILE"
+        echo "Successfully added $new_count new entries to $LOCAL_FILE"
+
+        # Show total count
+        total_count=$(jq 'length' "$LOCAL_FILE")
+        echo "Total entries in local file: $total_count"
+      else
+        echo "Error: Failed to merge new entries"
+        rm -f "${LOCAL_FILE}.tmp"
+        exit 1
+      fi
+    else
+      echo "No new entries found. Local file is up to date."
+    fi
+  else
+    echo "Failed to fetch API data"
+    exit 1
+  fi
+fi
+
+echo "GPF data crawler completed successfully!"
+
+# Clean up temporary files
+rm -f "$MONTHLY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
