@@ -27,20 +27,37 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       # Make GPF_crawler.sh executable, then run
-      - name: Execute GPF_crawler.sh
+      - name: Execute
         run: |
           chmod +x ./GPF_crawler.sh
           ./GPF_crawler.sh
 
       # Runs a single command using the runners shell
       - name: Commit
+        id: GPF-commit
         run: |
           git config --global user.name '${{ secrets.USER_NAME }}'
           git config --global user.email '${{ secrets.USER_EMAIL }}'
           git add .
           git commit -am "GPF Scripts Runner (automated)"
           git push
+
+      # Notify if there was a commit to GPF
+      - name: Notify
+        if: steps.GPF-commit.outcome == 'success'
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL }}
+          password: ${{ secrets.GMAIL_APP_PASS }}
+          subject: New automatic commit to quotes-crawler/GPF
+          body: New automatic commit to quotes-crawler/GPF (https://github.com/saris-a37/quotes-crawler/tree/main/GPF) by scripts_runner.yml
+          to: ${{ secrets.USER_EMAIL }}
+          from: saris-a37/quotes-crawler
