@@ -77,7 +77,7 @@ fetch_api_data() {
 
   # Fetch data from API and append to temporary JSON
   for month_year in "${!API_URLs[@]}"; do
-    echo "Fetching data from API..."
+    echo "Fetching $month_year data from API..."
     if curl -s "${API_URLs[$month_year]}" > "$MONTHLY_FILE"; then
       # Check if response is valid JSON
       if jq empty "$MONTHLY_FILE" 2>/dev/null; then
