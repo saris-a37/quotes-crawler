@@ -1,0 +1,45 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Scripts Runner
+
+# Controls when the workflow will run
+on:
+  # Automatically run workflow with cron schedule
+  schedule:
+    - cron: '5/15 * * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  GPF:
+    # Set running environments to be the same as local machine the scripts were tested on
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./GPF
+
+    # Grant write content permission to the job
+    permissions:
+      contents: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Make GPF_crawler.sh executable, then run
+      - name: Execute GPF_crawler.sh
+        run: |
+          chmod +x ./GPF_crawler.sh
+          ./GPF_crawler.sh
+
+      # Runs a single command using the runners shell
+      - name: Commit
+        run: |
+          git config --global user.name 'saris-a37'
+          git config --global user.email 't.saris@live.com'
+          git commit -am "GPF Scripts Runner (automated)"
+          git push
