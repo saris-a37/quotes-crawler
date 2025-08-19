@@ -30,7 +30,7 @@ The script combines JSONs from `gpf.or.th`'s API (https://www.gpf.or.th/thai2019
 | 13 | EQ75 Plan |
 | 14 | Vayupak Plan |
 
-All past and present GPF's securities listed on its website is currently supported. Data include all quotes available since each security's inception. Note that there may be up to 15 minutes delay in data fetching.
+All past and present GPF's securities listed on its website is currently supported. Data include all quotes available since each security's inception. There may be up to 15 minutes delay in routine fetching; please be noted that data from this official API is usually delayed by several days already.
 
 ## License
 
