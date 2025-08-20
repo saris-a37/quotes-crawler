@@ -15,8 +15,8 @@ The script combines JSONs from `gpf.or.th`'s API (https://www.gpf.or.th/thai2019
 
 | Number | Security (Invesment Plan Name) |
 |--------|-----------|
-| 1 | EQ35 Plan |
-| 2 | Default Plan |
+| 1 | Default Plan |
+| 2 | EQ35 Plan |
 | 3 | Fixed Income Plan |
 | 4 | Money Market Plan |
 | 5 | EQ20 Plan |
