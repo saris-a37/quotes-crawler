@@ -104,7 +104,7 @@ All past and present GPF's securities listed on its website is currently support
 
 _under construction_
 
-The script combines JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/api/index/), which is the source of monthly datasets shown in [ThaiBMA's bond indices page](https://www.thaibma.or.th/EN/Market/Index/), into a single file …. The resulting JSON is in the original format queried from the API; an excerpt is provided below with keys:
+The scripts combine JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/api/index/), which is the source of monthly datasets shown in [ThaiBMA's bond indices page](https://www.thaibma.or.th/EN/Market/Index/), into a single file for each `bondType` query key. The resulting JSON is in the original format queried from the API; an excerpt is provided below with keys:
 
 ```
 [
@@ -132,88 +132,92 @@ The script combines JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/
 ]
 ```
 
+#### Bond Index
+
+from `https://www.thaibma.or.th/api/index/` to [thaibma_index_data.JSON](...)
+
 | Index | Value of `TtmGroupName` | Key | Remarks |
 |-------|-------------------------|-----|---------|
-|  | Government Bond Index |  |  |
-|  | Government Bond Index |  |  |
-|  | Government Bond Index |  |  |
-|  | Government Bond Index |  |  |
-|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
-|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
-|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
-|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+|  | Government Bond Index | CleanPriceIndex |  |
+|  | Government Bond Index | GrossPriceIndex |  |
+|  | Government Bond Index | TotalReturnIndex |  |
+|  | Government Bond Index | NetTotalReturnIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
+|  | Group 4 ( > 10 ) | CleanPriceIndex |  |
+|  | Group 4 ( > 10 ) | GrossPriceIndex |  |
+|  | Group 4 ( > 10 ) | TotalReturnIndex |  |
+|  | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
+|  | Group 5 ( <= 10 ) | CleanPriceIndex |  |
+|  | Group 5 ( <= 10 ) | GrossPriceIndex |  |
+|  | Group 5 ( <= 10 ) | TotalReturnIndex |  |
+|  | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
+|  | Group 6 ( <= 1 ) | CleanPriceIndex |  |
+|  | Group 6 ( <= 1 ) | GrossPriceIndex |  |
+|  | Group 6 ( <= 1 ) | TotalReturnIndex |  |
+|  | Group 6 ( <= 1 ) | NetTotalReturnIndex |  |
+|  | Group 7 ( 10 < TTM <= 30 ) | CleanPriceIndex |  |
+|  | Group 7 ( 10 < TTM <= 30 ) | GrossPriceIndex |  |
+|  | Group 7 ( 10 < TTM <= 30 ) | TotalReturnIndex |  |
+|  | Group 7 ( 10 < TTM <= 30 ) | NetTotalReturnIndex |  |
+|  | SOE (G) Bond Index | CleanPriceIndex |  |
+|  | SOE (G) Bond Index | GrossPriceIndex |  |
+|  | SOE (G) Bond Index | TotalReturnIndex |  |
+|  | SOE (G) Bond Index | NetTotalReturnIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
+|  | Group 4 ( > 10 ) | CleanPriceIndex |  |
+|  | Group 4 ( > 10 ) | GrossPriceIndex |  |
+|  | Group 4 ( > 10 ) | TotalReturnIndex |  |
+|  | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
+|  | Group 5 ( <= 10 ) | CleanPriceIndex |  |
+|  | Group 5 ( <= 10 ) | GrossPriceIndex |  |
+|  | Group 5 ( <= 10 ) | TotalReturnIndex |  |
+|  | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
+|  | SOE (NG) Bond Index | CleanPriceIndex |  |
+|  | SOE (NG) Bond Index | GrossPriceIndex |  |
+|  | SOE (NG) Bond Index | TotalReturnIndex |  |
+|  | SOE (NG) Bond Index | NetTotalReturnIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
+|  | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
+|  | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
+|  | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
+|  | Group 4 ( > 10 ) | CleanPriceIndex |  |
+|  | Group 4 ( > 10 ) | GrossPriceIndex |  |
+|  | Group 4 ( > 10 ) | TotalReturnIndex |  |
+|  | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
+|  | Group 5 ( <= 10 ) | CleanPriceIndex |  |
+|  | Group 5 ( <= 10 ) | GrossPriceIndex |  |
+|  | Group 5 ( <= 10 ) | TotalReturnIndex |  |
+|  | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
 
 #### Bond Price
 
