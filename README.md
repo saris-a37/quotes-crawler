@@ -8,6 +8,9 @@ Scripts for automatic crawling of quotes from different durations into a single 
 ## Currently supported sources
 
 - [x] [GPF](https://www.gpf.or.th/thai2019/About/main.php?page=memberfund&lang=en&menu=statistic): all securities, entire duration since inception, up to 15 minutes delay ([more details](#gpf))
+- [ ] [ThaiBMA](https://www.thaibma.or.th/EN/homeEN.aspx)
+  - [ ] [ThaiBMA Bond Indices](https://www.thaibma.or.th/EN/Market/Index/)
+  - [ ] [Bond Price](https://www.thaibma.or.th/EN/Market/BondPrice/BondPrice.aspx)
 
 ### GPF
 
@@ -94,6 +97,127 @@ The script combines JSONs from `gpf.or.th`'s API (https://www.gpf.or.th/thai2019
 | 14 | Vayupak Plan |  |
 
 All past and present GPF's securities listed on its website is currently supported. Data include all quotes available since each security's inception. There may be up to 15 minutes delay in routine fetching; please be noted that data from this official API is usually delayed by several days already.
+
+### ThaiBMA
+
+#### ThaiBMA Bond Indices
+
+_under construction_
+
+The script combines JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/api/index/), which is the source of monthly datasets shown in [ThaiBMA's bond indices page](https://www.thaibma.or.th/EN/Market/Index/), into a single file …. The resulting JSON is in the original format queried from the API; an excerpt is provided below with keys:
+
+```
+[
+  ⋮
+  {
+    "Asof": "2025-08-20T00:00:00",
+    "TtmGroupName": "Government Bond Index",
+    "CleanPriceIndex": 116.469515,
+    "CleanPriceIndexChange": 0.088899,
+    "GrossPriceIndex": 117.067798,
+    "GrossPriceIndexChange": 0.097083,
+    "TotalReturnIndex": 373.916809,
+    "TotalReturnIndexChange": 0.310081,
+    "AvgYTMIndex": 1.695399,
+    "AvgDurationIndex": 9.660105,
+    "AvgConvexityIndex": 188.933305,
+    "AvgTtmIndex": 11.929309,
+    "AvgSimpleIndex": 1.448403,
+    "NetTotalReturnIndex": 113.804805,
+    "NetTotalReturnIndexChange": 0.093254,
+    "Rating": null,
+    "RatingOrder": null
+  },
+  ⋮
+]
+```
+
+| Index | Value of `TtmGroupName` | Key | Remarks |
+|-------|-------------------------|-----|---------|
+|  | Government Bond Index |  |  |
+|  | Government Bond Index |  |  |
+|  | Government Bond Index |  |  |
+|  | Government Bond Index |  |  |
+|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
+|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
+|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
+|  | Group 1 ( 1 < TTM <= 3 ) |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+
+#### Bond Price
+
+_planned_
 
 ## License
 
