@@ -104,7 +104,7 @@ All past and present GPF's securities listed on its website is currently support
 
 _under construction_
 
-The scripts combine JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/api/index/), which is the source of monthly datasets shown in [ThaiBMA's bond indices page](https://www.thaibma.or.th/EN/Market/Index/), into a single file for each `bondType` query key. The resulting JSON is in the original format queried from the API; an excerpt is provided below with keys:
+The scripts combine JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/api/), which is the source of monthly datasets shown in [ThaiBMA's bond indices page](https://www.thaibma.or.th/EN/Market/Index/), into a single file for each `bondType` query key. The resulting JSON is in the original format queried from the API; an excerpt is provided below with keys:
 
 ```
 [
@@ -235,6 +235,22 @@ from `https://www.thaibma.or.th/api/index/?isShowSubGroup=false` to [thaibma_ind
 |  | Corporate Bond Index (BBB up)  | GrossPriceIndex | obsoleted since 31 Dec 2021 |
 |  | Corporate Bond Index (BBB up)  | TotalReturnIndex | obsoleted since 31 Dec 2021 |
 |  | Corporate Bond Index (BBB up)  | NetTotalReturnIndex | obsoleted since 31 Dec 2021 |
+
+##### [Composite Bond Index](https://www.thaibma.or.th/EN/Market/Index/CompositeIndex.aspx)
+
+from `https://www.thaibma.or.th/api/CompositeIndex/?IndexType=Composite(Corp)` to [thaibma_CompositeIndex_IndexType-Composite(Corp)_data.JSON](...)
+
+| Index | Value of `TtmGroupName` | Key | Remarks |
+|-------|-------------------------|-----|---------|
+|  | Composite Bond Index | CleanPriceIndex |  |
+|  | Composite Bond Index | GrossPriceIndex |  |
+|  | Composite Bond Index | TotalReturnIndex |  |
+
+##### [Zero Rate Return (ZRR) Index](https://www.thaibma.or.th/EN/Market/Index/ZRRIndex.aspx)
+
+from `[https://www.thaibma.or.th/api/CompositeIndex/?IndexType=Composite(Corp)](https://www.thaibma.or.th/api/zrrindex/?ratingName=RF)` to [thaibma_zrrindex_ratingName-RF_data.JSON](...)
+
+
 
 #### Bond Price
 
