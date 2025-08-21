@@ -132,7 +132,9 @@ The scripts combine JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/
 ]
 ```
 
-#### Bond Index
+##### [Bond Index](https://www.thaibma.or.th/EN/Market/Index/BondIndex.aspx)
+
+###### ThaiBMA Bond Index
 
 from `https://www.thaibma.or.th/api/index/` to [thaibma_index_data.JSON](...)
 
@@ -218,6 +220,21 @@ from `https://www.thaibma.or.th/api/index/` to [thaibma_index_data.JSON](...)
 |  | Group 5 ( <= 10 ) | GrossPriceIndex |  |
 |  | Group 5 ( <= 10 ) | TotalReturnIndex |  |
 |  | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
+
+###### ThaiBMA Investment Grade Corporate Bond Index
+
+from `https://www.thaibma.or.th/api/index/?isShowSubGroup=false` to [thaibma_index_isShowSubGroup-false_data.JSON](...)
+
+| Index | Value of `TtmGroupName` | Key | Remarks |
+|-------|-------------------------|-----|---------|
+|  | Corporate Bond Index (BBB+ up)  | CleanPriceIndex | obsoleted since 31 Dec 2021 |
+|  | Corporate Bond Index (BBB+ up)  | GrossPriceIndex | obsoleted since 31 Dec 2021 |
+|  | Corporate Bond Index (BBB+ up)  | TotalReturnIndex | obsoleted since 31 Dec 2021 |
+|  | Corporate Bond Index (BBB+ up)  | NetTotalReturnIndex | obsoleted since 31 Dec 2021 |
+|  | Corporate Bond Index (BBB up)  | CleanPriceIndex | obsoleted since 31 Dec 2021 |
+|  | Corporate Bond Index (BBB up)  | GrossPriceIndex | obsoleted since 31 Dec 2021 |
+|  | Corporate Bond Index (BBB up)  | TotalReturnIndex | obsoleted since 31 Dec 2021 |
+|  | Corporate Bond Index (BBB up)  | NetTotalReturnIndex | obsoleted since 31 Dec 2021 |
 
 #### Bond Price
 
