@@ -15,6 +15,7 @@ The script combines JSONs from `gpf.or.th`'s API (https://www.gpf.or.th/thai2019
 
 ```
 [
+  ⋮
   {
     "SEQ": 4202,
     "UNIT_COST": 24.0214,
