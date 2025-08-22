@@ -248,9 +248,46 @@ from `https://www.thaibma.or.th/api/CompositeIndex/?IndexType=Composite(Corp)` t
 
 ##### [Zero Rate Return (ZRR) Index](https://www.thaibma.or.th/EN/Market/Index/ZRRIndex.aspx)
 
-from `[https://www.thaibma.or.th/api/CompositeIndex/?IndexType=Composite(Corp)](https://www.thaibma.or.th/api/zrrindex/?ratingName=RF)` to [thaibma_zrrindex_ratingName-RF_data.JSON](...)
+from `https://www.thaibma.or.th/api/zrrindex/?ratingName=RF` to [thaibma_zrrindex_ratingName-RF_data.JSON](...)
 
+| Index | Value of `TtmName` | Key | Remarks |
+|-------|-------------------------|-----|---------|
+|  | 1-Month | ZrrIndex |  |
+|  | 3-Month | ZrrIndex |  |
+|  | 6-Month | ZrrIndex |  |
+|  | 1-Year | ZrrIndex |  |
+|  | 2-Year | ZrrIndex |  |
+|  | 3-Year | ZrrIndex |  |
+|  | 4-Year | ZrrIndex |  |
+|  | 5-Year | ZrrIndex |  |
 
+##### [Treasury Bill Index](https://www.thaibma.or.th/EN/Market/Index/TBillIndex.aspx)
+
+from `https://www.thaibma.or.th/api/index?bondtype=TB` to [thaibma_index_bondtype-TB_data.JSON](...)
+
+| Index | Value of `TtmGroupName` | Key | Remarks |
+|-------|-------------------------|-----|---------|
+|  |  | CleanPriceIndex | obsoleted since 29 Jun 2011 |
+
+##### [Commercial Paper Index](https://www.thaibma.or.th/EN/Market/Index/CPIndex.aspx)
+
+from `https://www.thaibma.or.th/api/index/?bondType=CP` to [thaibma_index_bondtype-CP_data.JSON](...)
+
+| Index | Value of `TtmGroupName` | Key | Remarks |
+|-------|-------------------------|-----|---------|
+|  | Commercial Paper Index (AA- up)  | CleanPriceIndex |  |
+|  | Commercial Paper Index (AA- up)  | GrossPriceIndex |  |
+|  | Commercial Paper Index (AA- up)  | TotalReturnIndex |  |
+|  | Commercial Paper Index (A- up)  | CleanPriceIndex |  |
+|  | Commercial Paper Index (A- up)  | GrossPriceIndex |  |
+|  | Commercial Paper Index (A- up)  | TotalReturnIndex |  |
+|  | Commercial Paper Index (BBB- up)  | CleanPriceIndex |  |
+|  | Commercial Paper Index (BBB- up)  | GrossPriceIndex |  |
+|  | Commercial Paper Index (BBB- up)  | TotalReturnIndex |  |
+
+##### 
+
+from `` to 
 
 #### Bond Price
 
