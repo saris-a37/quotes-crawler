@@ -140,38 +140,38 @@ from `https://www.thaibma.or.th/api/index/` to [thaibma_index_data.JSON](...)
 
 | Index | Value of `TtmGroupName` | Key | Remarks |
 |-------|-------------------------|-----|---------|
-|  | Government Bond Index | CleanPriceIndex |  |
-|  | Government Bond Index | GrossPriceIndex |  |
-|  | Government Bond Index | TotalReturnIndex |  |
-|  | Government Bond Index | NetTotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
-|  | Group 4 ( > 10 ) | CleanPriceIndex |  |
-|  | Group 4 ( > 10 ) | GrossPriceIndex |  |
-|  | Group 4 ( > 10 ) | TotalReturnIndex |  |
-|  | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
-|  | Group 5 ( <= 10 ) | CleanPriceIndex |  |
-|  | Group 5 ( <= 10 ) | GrossPriceIndex |  |
-|  | Group 5 ( <= 10 ) | TotalReturnIndex |  |
-|  | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
-|  | Group 6 ( <= 1 ) | CleanPriceIndex |  |
-|  | Group 6 ( <= 1 ) | GrossPriceIndex |  |
-|  | Group 6 ( <= 1 ) | TotalReturnIndex |  |
-|  | Group 6 ( <= 1 ) | NetTotalReturnIndex |  |
-|  | Group 7 ( 10 < TTM <= 30 ) | CleanPriceIndex |  |
-|  | Group 7 ( 10 < TTM <= 30 ) | GrossPriceIndex |  |
-|  | Group 7 ( 10 < TTM <= 30 ) | TotalReturnIndex |  |
-|  | Group 7 ( 10 < TTM <= 30 ) | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index | Government Bond Index | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index | Government Bond Index | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index | Government Bond Index | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index | Government Bond Index | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index Group 6 ( ≤ 1 ) | Group 6 ( <= 1 ) | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index Group 6 ( ≤ 1 ) | Group 6 ( <= 1 ) | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index Group 6 ( ≤ 1 ) | Group 6 ( <= 1 ) | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index Group 6 ( ≤ 1 ) | Group 6 ( <= 1 ) | NetTotalReturnIndex |  |
+| Government Bond Weighted Average Execution Clean Price Index Group 7 ( 10 < TTM ≤ 30 ) | Group 7 ( 10 < TTM <= 30 ) | CleanPriceIndex |  |
+| Government Bond Weighted Average Execution Gross Price Index Group 7 ( 10 < TTM ≤ 30 ) | Group 7 ( 10 < TTM <= 30 ) | GrossPriceIndex |  |
+| Government Bond Weighted Average Execution Total Return Index Group 7 ( 10 < TTM ≤ 30 ) | Group 7 ( 10 < TTM <= 30 ) | TotalReturnIndex |  |
+| Government Bond Weighted Average Execution Net Total Return Index Group 7 ( 10 < TTM ≤ 30 ) | Group 7 ( 10 < TTM <= 30 ) | NetTotalReturnIndex |  |
 |  | SOE (G) Bond Index | CleanPriceIndex |  |
 |  | SOE (G) Bond Index | GrossPriceIndex |  |
 |  | SOE (G) Bond Index | TotalReturnIndex |  |
