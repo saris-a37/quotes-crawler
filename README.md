@@ -443,86 +443,86 @@ from `https://www.thaibma.or.th/api/index/?bondType=FixedTerm-Corporate` to [tha
 
 | Index | Value of `TtmGroupName` | Value of `Rating` | Value of `RatingOrder` | Key | Remarks |
 |-------|-------------------------|-------------------|------------------------|-----|---------|
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
-| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (A- up)  | 7 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB+ up)  | 8 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB up)  | 9 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 1 ( TTM = 1 ) | Group 1 [ttm=1] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 2 ( TTM = 2 ) | Group 2 [ttm=2] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 3 ( TTM = 3 ) | Group 3 [ttm=3] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 4 ( TTM = 4 ) | Group 4 [ttm=4] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | CleanPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | GrossPriceIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | TotalReturnIndex |  |
+| Fixed-Term Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 5 ( TTM = 5 ) | Group 5 [ttm=5] | Fixed-Term Corporate Bond Index (BBB- up)  | 10 | NetTotalReturnIndex |  |
 
 ##### [ESG Bond Index](https://www.thaibma.or.th/EN/Market/Index/ESGIndex.aspx)
 
