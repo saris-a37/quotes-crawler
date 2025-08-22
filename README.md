@@ -227,14 +227,14 @@ from `https://www.thaibma.or.th/api/index/?isShowSubGroup=false` to [thaibma_ind
 
 | Index | Value of `TtmGroupName` | Key | Remarks |
 |-------|-------------------------|-----|---------|
-|  | Corporate Bond Index (BBB+ up)  | CleanPriceIndex | obsoleted since 31 Dec 2021 |
-|  | Corporate Bond Index (BBB+ up)  | GrossPriceIndex | obsoleted since 31 Dec 2021 |
-|  | Corporate Bond Index (BBB+ up)  | TotalReturnIndex | obsoleted since 31 Dec 2021 |
-|  | Corporate Bond Index (BBB+ up)  | NetTotalReturnIndex | obsoleted since 31 Dec 2021 |
-|  | Corporate Bond Index (BBB up)  | CleanPriceIndex | obsoleted since 31 Dec 2021 |
-|  | Corporate Bond Index (BBB up)  | GrossPriceIndex | obsoleted since 31 Dec 2021 |
-|  | Corporate Bond Index (BBB up)  | TotalReturnIndex | obsoleted since 31 Dec 2021 |
-|  | Corporate Bond Index (BBB up)  | NetTotalReturnIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB+ Weighted Average Execution Clean Price Index | Corporate Bond Index (BBB+ up)  | CleanPriceIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB+ Weighted Average Execution Gross Price Index | Corporate Bond Index (BBB+ up)  | GrossPriceIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB+ Weighted Average Execution Total Return Index | Corporate Bond Index (BBB+ up)  | TotalReturnIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB+ Weighted Average Execution Net Total Return Index | Corporate Bond Index (BBB+ up)  | NetTotalReturnIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB Weighted Average Execution Clean Price Index | Corporate Bond Index (BBB up)  | CleanPriceIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB Weighted Average Execution Gross Price Index | Corporate Bond Index (BBB up)  | GrossPriceIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB Weighted Average Execution Total Return Index | Corporate Bond Index (BBB up)  | TotalReturnIndex | obsoleted since 31 Dec 2021 |
+| Corporate Bond ≥ BBB Weighted Average Execution Net Total Return Index | Corporate Bond Index (BBB up)  | NetTotalReturnIndex | obsoleted since 31 Dec 2021 |
 
 ##### [Composite Bond Index](https://www.thaibma.or.th/EN/Market/Index/CompositeIndex.aspx)
 
