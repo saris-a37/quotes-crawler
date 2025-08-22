@@ -585,14 +585,14 @@ from `https://www.thaibma.or.th/api/a3gbi` to [thaibma_a3gbi_data.JSON](...)
 
 | Index | Value of `IndexNo` | Value of `IndexSeriesTitle` | Key | Remarks |
 |-------|--------------------|-----------------------------|-----|---------|
-|  | 1 | ASEAN3 Government Bond Index | IndexValue |  |
-|  | 1 | ASEAN3 Government Bond Index | AverageCleanPrice |  |
-|  | 2 | ASEAN3 Government Rupiah Bond Index | IndexValue |  |
-|  | 2 | ASEAN3 Government Rupiah Bond Index | AverageCleanPrice |  |
-|  | 3 | ASEAN3 Government Ringgit Bond Index | IndexValue |  |
-|  | 3 | ASEAN3 Government Ringgit Bond Index | AverageCleanPrice |  |
-|  | 4 | ASEAN3 Government Baht Bond Index | IndexValue |  |
-|  | 4 | ASEAN3 Government Baht Bond Index | AverageCleanPrice |  |
+| ASEAN3 Government Bond Index | 1 | ASEAN3 Government Bond Index | IndexValue |  |
+| ASEAN3 Government Bond Clean Price Index | 1 | ASEAN3 Government Bond Index | AverageCleanPrice |  |
+| ASEAN3 Government Rupiah Bond Index | 2 | ASEAN3 Government Rupiah Bond Index | IndexValue |  |
+| ASEAN3 Government Rupiah Bond Clean Price Index | 2 | ASEAN3 Government Rupiah Bond Index | AverageCleanPrice |  |
+| ASEAN3 Government Ringgit Bond Index | 3 | ASEAN3 Government Ringgit Bond Index | IndexValue |  |
+| ASEAN3 Government Ringgit Bond Clean Price Index | 3 | ASEAN3 Government Ringgit Bond Index | AverageCleanPrice |  |
+| ASEAN3 Government Baht Bond Index | 4 | ASEAN3 Government Baht Bond Index | IndexValue |  |
+| ASEAN3 Government Baht Bond Clean Price Index | 4 | ASEAN3 Government Baht Bond Index | AverageCleanPrice |  |
 
 #### Bond Price
 
