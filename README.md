@@ -530,54 +530,54 @@ from `https://www.thaibma.or.th/api/index/?bondType=esg` to [thaibma_index_bondt
 
 | Index | Value of `TtmGroupName` | Value of `Rating` | Value of `RatingOrder` | Key | Remarks |
 |-------|-------------------------|-------------------|------------------------|-----|---------|
-|  | ESG Bond Index | ทุกช่วงอายุ | 1 | CleanPriceIndex |  |
-|  | ESG Bond Index | ทุกช่วงอายุ | 1 | GrossPriceIndex |  |
-|  | ESG Bond Index | ทุกช่วงอายุ | 1 | TotalReturnIndex |  |
-|  | ESG Bond Index | ทุกช่วงอายุ | 1 | NetTotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | CleanPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | GrossPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | TotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | NetTotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | CleanPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | GrossPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | TotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | NetTotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | CleanPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | GrossPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | TotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | NetTotalReturnIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 1 | CleanPriceIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 1 | GrossPriceIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 1 | TotalReturnIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 1 | NetTotalReturnIndex |  |
-|  | Government Bond ESG Index | ทุกช่วงอายุ | 2 | CleanPriceIndex |  |
-|  | Government Bond ESG Index | ทุกช่วงอายุ | 2 | GrossPriceIndex |  |
-|  | Government Bond ESG Index | ทุกช่วงอายุ | 2 | TotalReturnIndex |  |
-|  | Government Bond ESG Index | ทุกช่วงอายุ | 2 | NetTotalReturnIndex |  |
-|  | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | CleanPriceIndex |  |
-|  | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | GrossPriceIndex |  |
-|  | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | TotalReturnIndex |  |
-|  | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | NetTotalReturnIndex |  |
-|  | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | CleanPriceIndex |  |
-|  | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | GrossPriceIndex |  |
-|  | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | TotalReturnIndex |  |
-|  | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | NetTotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | CleanPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | GrossPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | TotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | NetTotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | CleanPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | GrossPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | TotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | NetTotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | CleanPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | GrossPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | TotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | NetTotalReturnIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 4 | CleanPriceIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 4 | GrossPriceIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 4 | TotalReturnIndex |  |
-|  | Group 4 (TTM > 10) | TTM > 10 | 4 | NetTotalReturnIndex |  |
+| ESG Bond Marked-to-Market Clean Price Index | ESG Bond Index | ทุกช่วงอายุ | 1 | CleanPriceIndex |  |
+| ESG Bond Marked-to-Market Gross Price Index | ESG Bond Index | ทุกช่วงอายุ | 1 | GrossPriceIndex |  |
+| ESG Bond Marked-to-Market Total Return Index | ESG Bond Index | ทุกช่วงอายุ | 1 | TotalReturnIndex |  |
+| ESG Bond Marked-to-Market Net Total Return Index | ESG Bond Index | ทุกช่วงอายุ | 1 | NetTotalReturnIndex |  |
+| ESG Bond Marked-to-Market Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | CleanPriceIndex |  |
+| ESG Bond Marked-to-Market Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | GrossPriceIndex |  |
+| ESG Bond Marked-to-Market Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | TotalReturnIndex |  |
+| ESG Bond Marked-to-Market Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 1 | NetTotalReturnIndex |  |
+| ESG Bond Marked-to-Market Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | CleanPriceIndex |  |
+| ESG Bond Marked-to-Market Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | GrossPriceIndex |  |
+| ESG Bond Marked-to-Market Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | TotalReturnIndex |  |
+| ESG Bond Marked-to-Market Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 1 | NetTotalReturnIndex |  |
+| ESG Bond Marked-to-Market Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | CleanPriceIndex |  |
+| ESG Bond Marked-to-Market Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | GrossPriceIndex |  |
+| ESG Bond Marked-to-Market Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | TotalReturnIndex |  |
+| ESG Bond Marked-to-Market Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 1 | NetTotalReturnIndex |  |
+| ESG Bond Marked-to-Market Clean Price Index Group 4 ( TTM > 10 ) | Group 4 (TTM > 10) | TTM > 10 | 1 | CleanPriceIndex |  |
+| ESG Bond Marked-to-Market Gross Price Index Group 4 ( TTM > 10 ) | Group 4 (TTM > 10) | TTM > 10 | 1 | GrossPriceIndex |  |
+| ESG Bond Marked-to-Market Total Return Index Group 4 ( TTM > 10 ) | Group 4 (TTM > 10) | TTM > 10 | 1 | TotalReturnIndex |  |
+| ESG Bond Marked-to-Market Net Total Return Index Group 4 ( TTM > 10 ) | Group 4 (TTM > 10) | TTM > 10 | 1 | NetTotalReturnIndex |  |
+| ESG Government Bond Marked-to-Market Clean Price Index | Government Bond ESG Index | ทุกช่วงอายุ | 2 | CleanPriceIndex |  |
+| ESG Government Bond Marked-to-Market Gross Price Index | Government Bond ESG Index | ทุกช่วงอายุ | 2 | GrossPriceIndex |  |
+| ESG Government Bond Marked-to-Market Total Return Index | Government Bond ESG Index | ทุกช่วงอายุ | 2 | TotalReturnIndex |  |
+| ESG Government Bond Marked-to-Market Net Total Return Index | Government Bond ESG Index | ทุกช่วงอายุ | 2 | NetTotalReturnIndex |  |
+| ESG State-Owned Enterprise Bond Marked-to-Market Clean Price Index | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | CleanPriceIndex |  |
+| ESG State-Owned Enterprise Bond Marked-to-Market Gross Price Index | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | GrossPriceIndex |  |
+| ESG State-Owned Enterprise Bond Marked-to-Market Total Return Index | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | TotalReturnIndex |  |
+| ESG State-Owned Enterprise Bond Marked-to-Market Net Total Return Index | SOE Bond ESG Index | ทุกช่วงอายุ | 3 | NetTotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Clean Price Index | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | CleanPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Gross Price Index | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | GrossPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Total Return Index | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | TotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Net Total Return Index | Corporate Bond ESG Index | ทุกช่วงอายุ | 4 | NetTotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | CleanPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | GrossPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | TotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | 1 < TTM <= 3 | 4 | NetTotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | CleanPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | GrossPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | TotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | 3 < TTM <= 7 | 4 | NetTotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | CleanPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | GrossPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | TotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | 7 < TTM <= 10 | 4 | NetTotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Clean Price Index Group 4 ( TTM > 10 ) | Group 4 (TTM > 10) | TTM > 10 | 4 | CleanPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Gross Price Index Group 4 ( TTM > 10 ) | Group 4 (TTM > 10) | TTM > 10 | 4 | GrossPriceIndex |  |
+| ESG Corporate Bond Marked-to-Market Total Return Index Group 4 ( TTM > 10 ) | Group 4 (TTM > 10) | TTM > 10 | 4 | TotalReturnIndex |  |
+| ESG Corporate Bond Marked-to-Market Net Total Return Index Group 4 ( TTM > 10 )| Group 4 (TTM > 10) | TTM > 10 | 4 | NetTotalReturnIndex |  |
 
 ##### [ASEAN3 Government Bond Index](https://www.thaibma.or.th/EN/Market/Index/A3GBI.aspx)
 
