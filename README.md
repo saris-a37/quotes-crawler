@@ -344,98 +344,98 @@ from `https://www.thaibma.or.th/api/index/?bondType=corporate` to [thaibma_index
 | Corporate Bond ≥ A- Marked-to-Market Gross Price Index | MTM Corporate Bond Index (A- up)  | ทุกช่วงอายุ | 7 | GrossPriceIndex |  |
 | Corporate Bond ≥ A- Marked-to-Market Total Return Index | MTM Corporate Bond Index (A- up)  | ทุกช่วงอายุ | 7 | TotalReturnIndex |  |
 | Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | MTM Corporate Bond Index (A- up)  | ทุกช่วงอายุ | 7 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | CleanPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | GrossPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | TotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | CleanPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | GrossPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | TotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | CleanPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | GrossPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | TotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | CleanPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | GrossPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | TotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Clean Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | CleanPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Gross Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | GrossPriceIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | TotalReturnIndex |  |
-| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | CleanPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | GrossPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | TotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 7 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | CleanPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | GrossPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | TotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 7 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | CleanPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | GrossPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | TotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 7 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | CleanPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | GrossPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | TotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 7 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Clean Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | CleanPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Gross Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | GrossPriceIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | TotalReturnIndex |  |
+| Corporate Bond ≥ A- Marked-to-Market Net Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 7 | NetTotalReturnIndex |  |
 | Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | MTM Corporate Bond Index (BBB+ up)  | ทุกช่วงอายุ | 8 | CleanPriceIndex |  |
 | Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | MTM Corporate Bond Index (BBB+ up)  | ทุกช่วงอายุ | 8 | GrossPriceIndex |  |
 | Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | MTM Corporate Bond Index (BBB+ up)  | ทุกช่วงอายุ | 8 | TotalReturnIndex |  |
 | Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | MTM Corporate Bond Index (BBB+ up)  | ทุกช่วงอายุ | 8 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 8 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 8 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 8 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 8 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Clean Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Gross Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB+ Marked-to-Market Net Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 8 | NetTotalReturnIndex |  |
 | Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | MTM Corporate Bond Index (BBB up)  | ทุกช่วงอายุ | 9 | CleanPriceIndex |  |
 | Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | MTM Corporate Bond Index (BBB up)  | ทุกช่วงอายุ | 9 | GrossPriceIndex |  |
 | Corporate Bond ≥ BBB Marked-to-Market Total Return Index | MTM Corporate Bond Index (BBB up)  | ทุกช่วงอายุ | 9 | TotalReturnIndex |  |
 | Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | MTM Corporate Bond Index (BBB up)  | ทุกช่วงอายุ | 9 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 9 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 9 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 9 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 9 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Clean Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Gross Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB Marked-to-Market Net Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 9 | NetTotalReturnIndex |  |
 | Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | MTM Corporate Bond Index (BBB- up)  | ทุกช่วงอายุ | 10 | CleanPriceIndex |  |
 | Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | MTM Corporate Bond Index (BBB- up)  | ทุกช่วงอายุ | 10 | GrossPriceIndex |  |
 | Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | MTM Corporate Bond Index (BBB- up)  | ทุกช่วงอายุ | 10 | TotalReturnIndex |  |
 | Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | MTM Corporate Bond Index (BBB- up)  | ทุกช่วงอายุ | 10 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | NetTotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | CleanPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | GrossPriceIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | TotalReturnIndex |  |
-| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 [ 1 < TTM <= 3 ] | 1 < TTM <= 3 | 10 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 [ 3 < TTM <= 7 ] | 3 < TTM <= 7 | 10 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 [ 7 < TTM <= 10 ] | 7 < TTM <= 10 | 10 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 4 ( TTM ≤ 10 ) | Group 4 [ TTM <= 10 ] | TTM <= 10 | 10 | NetTotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Clean Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | CleanPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Gross Price Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | GrossPriceIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | TotalReturnIndex |  |
+| Corporate Bond ≥ BBB- Marked-to-Market Net Total Return Index Group 5 ( TTM ≤ 1 ) | Group 5 [ TTM <= 1 ] | TTM <= 1 | 10 | NetTotalReturnIndex |  |
 
 ##### [Fixed-Term Corporate Bond Index](https://www.thaibma.or.th/EN/Market/Index/FixedTermCorpIndex.aspx)
 
