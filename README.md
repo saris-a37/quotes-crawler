@@ -172,54 +172,54 @@ from `https://www.thaibma.or.th/api/index/` to [thaibma_index_data.JSON](...)
 | Government Bond Weighted Average Execution Gross Price Index Group 7 ( 10 < TTM ≤ 30 ) | Group 7 ( 10 < TTM <= 30 ) | GrossPriceIndex |  |
 | Government Bond Weighted Average Execution Total Return Index Group 7 ( 10 < TTM ≤ 30 ) | Group 7 ( 10 < TTM <= 30 ) | TotalReturnIndex |  |
 | Government Bond Weighted Average Execution Net Total Return Index Group 7 ( 10 < TTM ≤ 30 ) | Group 7 ( 10 < TTM <= 30 ) | NetTotalReturnIndex |  |
-|  | SOE (G) Bond Index | CleanPriceIndex |  |
-|  | SOE (G) Bond Index | GrossPriceIndex |  |
-|  | SOE (G) Bond Index | TotalReturnIndex |  |
-|  | SOE (G) Bond Index | NetTotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
-|  | Group 4 ( > 10 ) | CleanPriceIndex |  |
-|  | Group 4 ( > 10 ) | GrossPriceIndex |  |
-|  | Group 4 ( > 10 ) | TotalReturnIndex |  |
-|  | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
-|  | Group 5 ( <= 10 ) | CleanPriceIndex |  |
-|  | Group 5 ( <= 10 ) | GrossPriceIndex |  |
-|  | Group 5 ( <= 10 ) | TotalReturnIndex |  |
-|  | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
-|  | SOE (NG) Bond Index | CleanPriceIndex |  |
-|  | SOE (NG) Bond Index | GrossPriceIndex |  |
-|  | SOE (NG) Bond Index | TotalReturnIndex |  |
-|  | SOE (NG) Bond Index | NetTotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
-|  | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
-|  | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
-|  | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
-|  | Group 4 ( > 10 ) | CleanPriceIndex |  |
-|  | Group 4 ( > 10 ) | GrossPriceIndex |  |
-|  | Group 4 ( > 10 ) | TotalReturnIndex |  |
-|  | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
-|  | Group 5 ( <= 10 ) | CleanPriceIndex |  |
-|  | Group 5 ( <= 10 ) | GrossPriceIndex |  |
-|  | Group 5 ( <= 10 ) | TotalReturnIndex |  |
-|  | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Clean Price Index | SOE (G) Bond Index | CleanPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Gross Price Index | SOE (G) Bond Index | GrossPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Total Return Index | SOE (G) Bond Index | TotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Net Total Return Index | SOE (G) Bond Index | NetTotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Clean Price Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Gross Price Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Total Return Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Net Total Return Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Clean Price Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Gross Price Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Total Return Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Guaranteed Bond Weighted Average Execution Net Total Return Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Clean Price Index | SOE (NG) Bond Index | CleanPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Gross Price Index | SOE (NG) Bond Index | GrossPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Total Return Index | SOE (NG) Bond Index | TotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Net Total Return Index | SOE (NG) Bond Index | NetTotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Clean Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Gross Price Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Net Total Return Index Group 1 ( 1 < TTM ≤ 3 ) | Group 1 ( 1 < TTM <= 3 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Clean Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Gross Price Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Net Total Return Index Group 2 ( 3 < TTM ≤ 7 ) | Group 2 ( 3 < TTM <= 7 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Clean Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Gross Price Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Net Total Return Index Group 3 ( 7 < TTM ≤ 10 ) | Group 3 ( 7 < TTM <= 10 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Clean Price Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Gross Price Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Total Return Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Net Total Return Index Group 4 ( > 10 ) | Group 4 ( > 10 ) | NetTotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Clean Price Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | CleanPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Gross Price Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | GrossPriceIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Total Return Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | TotalReturnIndex |  |
+| State-Owned Enterprise Non-Guaranteed Bond Weighted Average Execution Net Total Return Index Group 5 ( ≤ 10 ) | Group 5 ( <= 10 ) | NetTotalReturnIndex |  |
 
 ###### ThaiBMA Investment Grade Corporate Bond Index
 
