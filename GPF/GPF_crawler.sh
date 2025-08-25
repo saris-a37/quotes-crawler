@@ -34,41 +34,41 @@ fi
 fetch_api_data() {
 
   # Input month-year query range
-  local startmonth=$1
-  local startyear=$2
-  local endmonth=`date +"%m"`
-  local endyear=`date +"%Y"`
+  local LL_start=$1
+  local uuuu_start=$2
+  local LL_end=`date +"%m"`
+  local uuuu_end=`date +"%Y"`
 
   # Reset API URLs list
   API_URLs=()
 
   # Loop through years then months to generate API URLs list within query range
-  if [[ startyear -ne endyear ]]; then
-    year=$startyear
-    for ((month=$((10#$startmonth));month<=12;month++)); do
-      printf -v monthyearstring "%02d_%04d" $month $year
-      API_URL="${API_URL_BASE}${monthyearstring}"
-      API_URLs["$monthyearstring"]=$API_URL
+  if [[ uuuu_start -ne uuuu_end ]]; then
+    uuuu=$uuuu_start
+    for ((LL=$((10#$LL_start));LL<=12;LL++)); do
+      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
+      API_URL="${API_URL_BASE}${LL_uuuu}"
+      API_URLs["$LL_uuuu"]=$API_URL
     done
-    for ((year=startyear+1;year<endyear;year++)); do
-      for ((month=1;month<=12;month++)); do
-        printf -v monthyearstring "%02d_%04d" $month $year
-        API_URL="${API_URL_BASE}${monthyearstring}"
-        API_URLs["$monthyearstring"]=$API_URL
+    for ((uuuu=uuuu_start+1;uuuu<uuuu_end;uuuu++)); do
+      for ((LL=1;LL<=12;LL++)); do
+        printf -v LL_uuuu "%02d_%04d" $LL $uuuu
+        API_URL="${API_URL_BASE}${LL_uuuu}"
+        API_URLs["$LL_uuuu"]=$API_URL
       done
     done
-    year=$endyear
-    for ((month=1;month<=$((10#$endmonth));month++)); do
-      printf -v monthyearstring "%02d_%04d" $month $year
-      API_URL="${API_URL_BASE}${monthyearstring}"
-      API_URLs["$monthyearstring"]=$API_URL
+    uuuu=$uuuu_end
+    for ((LL=1;LL<=$((10#$LL_end));LL++)); do
+      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
+      API_URL="${API_URL_BASE}${LL_uuuu}"
+      API_URLs["$LL_uuuu"]=$API_URL
     done;
   else
-    year=$startyear
-    for ((month=$((10#$startmonth));month<=$((10#$endmonth));month++)); do
-      printf -v monthyearstring "%02d_%04d" $month $year
-      API_URL="${API_URL_BASE}${monthyearstring}"
-      API_URLs["$monthyearstring"]=$API_URL
+    uuuu=$uuuu_start
+    for ((LL=$((10#$LL_start));LL<=$((10#$LL_end));LL++)); do
+      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
+      API_URL="${API_URL_BASE}${LL_uuuu}"
+      API_URLs["$LL_uuuu"]=$API_URL
     done
   fi
 
@@ -76,9 +76,10 @@ fetch_api_data() {
   curl -s "https://www.gpf.or.th/thai2019/About/memberfund-api.php?pageName=NAVBottom_03_1997" > "$TEMP_FILE"
 
   # Fetch data from API and append to temporary JSON
-  for month_year in "${!API_URLs[@]}"; do
-    echo "Fetching $month_year data from API..."
-    if curl -s "${API_URLs[$month_year]}" > "$MONTHLY_FILE"; then
+  unset LL_uuuu
+  for LL_uuuu in "${!API_URLs[@]}"; do
+    echo "Fetching $LL_uuuu data from API..."
+    if curl -s "${API_URLs[$LL_uuuu]}" > "$MONTHLY_FILE"; then
       # Check if response is valid JSON
       if jq empty "$MONTHLY_FILE" 2>/dev/null; then
         echo "API data fetched successfully"
@@ -101,8 +102,8 @@ fetch_api_data() {
 # Find date of newest local entry & update metadata file
 find_newest_local () {
 
-  # Get newest local date (convert DD/MM/YYYY hh:mm:ss to YYYY-MM-DD hh:mm:ss for comparison)
-  local newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$day, $month, $year] | "\($year)-\($month)-\($day) \($time)"] | sort | .[-1]' "$LOCAL_FILE")
+  # Get newest local date (convert dd/LL/uuuu HH:mm:ss to uuuu-LL-dd HH:mm:ss for comparison)
+  local newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$dd, $LL, $uuuu] | "\($uuuu)-\($LL)-\($dd) \($time)"] | sort | .[-1]' "$LOCAL_FILE")
   echo "Latest local date: $newest_local"
 
   if [ ! -f "$METADATA_FILE" ]; then
@@ -155,20 +156,20 @@ else
     find_newest_local
   fi
   newest_local=$(jq -r '.newest_local' $METADATA_FILE)
-  newest_local_year=${newest_local:0:4}
-  newest_local_month=${newest_local:5:2}
+  newest_local_uuuu=${newest_local:0:4}
+  newest_local_LL=${newest_local:5:2}
   echo "Latest local date: $newest_local"
 
   # Query data since latest month in local file
   echo "Checking for new entries..."
-  if fetch_api_data $newest_local_month $newest_local_year; then
+  if fetch_api_data $newest_local_LL $newest_local_uuuu; then
 
     # Filter API data for entries newer than newest_local
     new_entries=$(jq --arg newest_local "$newest_local" '
       [.[] | select(
         (.LAUNCH_DATE | split(" ") as [$date, $time] |
-         ($date | split("/")) as [$day, $month, $year] |
-         "\($year)-\($month)-\($day) \($time)") > $newest_local
+         ($date | split("/")) as [$dd, $LL, $uuuu] |
+         "\($uuuu)-\($LL)-\($dd) \($time)") > $newest_local
       )]
     ' "$TEMP_FILE")
 
