@@ -83,17 +83,21 @@ fetch_api_data() {
     if curl -s "${API_URLs[$LL_uuuu]}" > "$MONTHLY_FILE"; then
       # Check if response is valid JSON
       if jq empty "$MONTHLY_FILE" 2>/dev/null; then
-        echo "API data fetched successfully"
         cp "$TEMP_FILE" "$TEMP_TEMP_FILE"
         jq -s add "$TEMP_TEMP_FILE" "$MONTHLY_FILE" > "$TEMP_FILE"
-        success_counter+=1
+        if [ $? -eq 0 ]; then
+          echo "API data fetched & merged to $TEMP_FILE successfully"
+          success_counter+=1
+        else
+          echo "Error: Failed to merge fetched data to $TEMP_FILE"
+          rm -f "$MONTHLY_FILE" "$TEMP_TEMP_FILE"
       else
         echo "Error: API returned invalid JSON"
-        rm -f "$MONTHLY_FILE" "$TEMP_FILE"
+        rm -f "$MONTHLY_FILE"
       fi
     else
       echo "Error: Failed to fetch data from API"
-      rm -f "$MONTHLY_FILE" "$TEMP_FILE"
+      rm -f "$MONTHLY_FILE"
     fi
   done
   # The function fails only if no JSON entry is generated at all; else proceeds with any number of entries generated regardless of failure.
