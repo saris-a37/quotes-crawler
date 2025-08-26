@@ -43,3 +43,34 @@ jobs:
           python -m pip install --upgrade pip
           python3 -m pip install pandas
           python3 -m pip install pdfplumber --break-system-packages
+
+      # Make scripts executable, then run
+      - name: Execute
+        run: |
+          chmod +x ./ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py
+          chmod +x ./ThaiBMA_Bond_Price_MTM_crawler.sh
+          ./GPF_crawler.sh
+
+      # Commit changes to master @ remote
+      - name: Commit
+        id: ThaiBMA-Bond-Price-MTM-commit
+        run: |
+          git config --global user.name '${{ secrets.USER_NAME }}'
+          git config --global user.email '${{ secrets.USER_EMAIL }}'
+          git add .
+          git commit -am "ThaiBMA Bond Price MTM Runner Scripts Runner (automated)"
+          git push
+
+      # Notify if there was a commit to ThaiBMA Bond Price MTM
+      - name: Notify
+        if: steps.ThaiBMA-Bond-Price-MTM-commit.outcome == 'success'
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL }}
+          password: ${{ secrets.GMAIL_APP_PASS }}
+          subject: New automatic commit to quotes-crawler/ThaiBMA
+          body: New automatic commit to quotes-crawler/ThaiBMA (https://github.com/saris-a37/quotes-crawler/tree/main/ThaiBMA) by ThaiBMA_Bond_Price_MTM_runner.yml
+          to: ${{ secrets.USER_EMAIL }}
+          from: saris-a37/quotes-crawler
