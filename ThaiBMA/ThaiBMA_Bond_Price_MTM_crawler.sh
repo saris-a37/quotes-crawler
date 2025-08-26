@@ -158,21 +158,26 @@ fetch_api_data() {
         python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $ddLLuuuu
         # Check if PDF is converted to valid JSON
         if jq empty "$MONTHLY_JSON" 2>/dev/null; then
-          echo "PDF converted to JSON successfully"
           cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
           jq -s add "$TEMP_TEMP_JSON" "$MONTHLY_JSON" > "$TEMP_JSON"
-          success_counter+=1
+          if [ $? -eq 0 ]; then
+            echo "PDF fetched, converted, & merged to $TEMP_JSON successfully"
+            success_counter+=1
+          else
+            echo "Error: Failed to merge fetched data to $TEMP_JSON"
+            rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_TEMP_FILE"
+          fi
         else
           echo "Error: PDF fetched but conversion to JSON failed"
-          rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
+          rm -f "$MONTHLY_PDF" "$MONTHLY_JSON"
         fi
       else
         echo "Error: Failed to fetch PDF"
-        rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
+        rm -f "$MONTHLY_PDF" "$MONTHLY_JSON"
       fi
     else
       echo "Error: Failed to fetch PDF"
-      rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
+      rm -f "$MONTHLY_PDF" "$MONTHLY_JSON"
     fi
   done
   # The function fails only if no JSON entry is generated at all; else proceeds with any number of entries generated regardless of failure.
