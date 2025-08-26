@@ -49,7 +49,7 @@ jobs:
         run: |
           chmod +x ./ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py
           chmod +x ./ThaiBMA_Bond_Price_MTM_crawler.sh
-          ./GPF_crawler.sh
+          ./ThaiBMA_Bond_Price_MTM_crawler.sh
 
       # Commit changes to master @ remote
       - name: Commit
