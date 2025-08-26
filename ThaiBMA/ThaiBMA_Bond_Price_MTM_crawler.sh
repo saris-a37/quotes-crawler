@@ -1,10 +1,10 @@
-#!/bin/bash
+[$LL]#!/bin/bash
 
 # ThaiBMA Bond Price MTM Data Crawler Script
 # Updates local JSON file with new entries from ThaiBMA Bond Price MTM
 
 # Local JSON
-LOCAL_FILE="thaibma_bond_price_mtm_data.json"
+LOCAL_JSON="thaibma_bond_price_mtm_data.json"
 
 # ThaiBMA Bond Price MTM API URLs
 API_URL=
@@ -15,23 +15,29 @@ API_URL_FILE_BASE="/ThaiBMA_MarktoMarket_MonthEnd_"
 API_URL_FILE_EXTENSION=".pdf"
 API_URL_BASE="${API_URL_ORIGIN}${API_URL_DIRECTORY}${API_URL_FILE_BASE}"
 
-: '
-
 # Temporary files
-TEMP_FILE="gpf_data_temp.json"
-TEMP_TEMP_FILE="gpf_data_temp_temp.json"
-MONTHLY_FILE="gpf_data_monthly.json"
+TEMP_JSON="thaibma_bond_price_mtm_data_temp.json"
+TEMP_TEMP_JSON="thaibma_bond_price_mtm_data_temp_temp.json"
+MONTHLY_JSON="thaibma_bond_price_mtm_data_monthly.json"
+MONTHLY_PDF="thaibma_bond_price_mtm_data_monthly.pdf"
 
 # Metadata
-METADATA_FILE="gpf_data_metadata.json"
+METADATA_FILE="thaibma_bond_price_mtm_data_metadata.json"
 
-echo "Starting GPF data crawler..."
+echo "Starting ThaiBMA Bond Price MTM data crawler..."
 
-# Check if jq is installed
-if ! command -v jq &> /dev/null; then
-  echo "Error: jq is required but not installed. Please install jq first."
-  exit 1
-fi
+# Check dependencies
+dependencies=("jq" "python")
+dependency_errors=0
+for dependency in "${dependencies[@]}"; do
+  if ! command -v $dependency &> /dev/null; then
+    echo "Error: $dependency is required but not installed. Please install $dependency first."
+    dependency_errors+=1
+  fi
+  if [[ dependency_errors -ne 0 ]]; then
+    exit 1
+  fi
+done
 
 # Function to fetch API data with error checking
 fetch_api_data() {
@@ -46,56 +52,120 @@ fetch_api_data() {
   API_URLs=()
 
   # Loop through years then months to generate API URLs list within query range
+  declare -A last_dd
+    last_dd[1]="31"
+    last_dd[3]="31"
+    last_dd[4]="30"
+    last_dd[5]="31"
+    last_dd[6]="30"
+    last_dd[7]="31"
+    last_dd[8]="31"
+    last_dd[9]="30"
+    last_dd[10]="31"
+    last_dd[11]="30"
+    last_dd[12]="31"
   if [[ uuuu_start -ne uuuu_end ]]; then
     uuuu=$uuuu_start
     for ((LL=$((10#$LL_start));LL<=12;LL++)); do
-      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-      API_URL="${API_URL_BASE}${LL_uuuu}"
-      API_URLs["$LL_uuuu"]=$API_URL
+      if [[ LL -eq 2 ]]; then
+        if [[ uuuu%4 -eq 0 ]]; then
+          printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
+          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+          API_URLs["$ddLLuuuu"]=$API_URL
+        else
+          printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
+          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+          API_URLs["$ddLLuuuu"]=$API_URL
+        fi
+      else
+        printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
+        API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+        API_URLs["$ddLLuuuu"]=$API_URL
+      fi
     done
     for ((uuuu=uuuu_start+1;uuuu<uuuu_end;uuuu++)); do
       for ((LL=1;LL<=12;LL++)); do
-        printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-        API_URL="${API_URL_BASE}${LL_uuuu}"
-        API_URLs["$LL_uuuu"]=$API_URL
+        if [[ LL -eq 2 ]]; then
+          if [[ uuuu%4 -eq 0 ]]; then
+            printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
+            API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+            API_URLs["$ddLLuuuu"]=$API_URL
+          else
+            printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
+            API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+            API_URLs["$ddLLuuuu"]=$API_URL
+          fi
+        else
+          printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
+          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+          API_URLs["$ddLLuuuu"]=$API_URL
+        fi
       done
     done
     uuuu=$uuuu_end
     for ((LL=1;LL<=$((10#$LL_end));LL++)); do
-      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-      API_URL="${API_URL_BASE}${LL_uuuu}"
-      API_URLs["$LL_uuuu"]=$API_URL
+      if [[ LL -eq 2 ]]; then
+        if [[ uuuu%4 -eq 0 ]]; then
+          printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
+          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+          API_URLs["$ddLLuuuu"]=$API_URL
+        else
+          printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
+          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+          API_URLs["$ddLLuuuu"]=$API_URL
+        fi
+      else
+        printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
+        API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+        API_URLs["$ddLLuuuu"]=$API_URL
+      fi
     done;
   else
     uuuu=$uuuu_start
     for ((LL=$((10#$LL_start));LL<=$((10#$LL_end));LL++)); do
-      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-      API_URL="${API_URL_BASE}${LL_uuuu}"
-      API_URLs["$LL_uuuu"]=$API_URL
+      if [[ LL -eq 2 ]]; then
+        if [[ uuuu%4 -eq 0 ]]; then
+          printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
+          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+          API_URLs["$ddLLuuuu"]=$API_URL
+        else
+          printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
+          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+          API_URLs["$ddLLuuuu"]=$API_URL
+        fi
+      else
+        printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
+        API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
+        API_URLs["$ddLLuuuu"]=$API_URL
+      fi
     done
   fi
 
-  # Create temporary JSON file with the same format as in API using 03_1997 data as dummy
-  curl -s "https://www.gpf.or.th/thai2019/About/memberfund-api.php?pageName=NAVBottom_03_1997" > "$TEMP_FILE"
+  # Create temporary JSON file with the same format as in API using 31082009 data as dummy
+  curl -s "https://www.thaibma.or.th/download/monthly/m2m/ThaiBMA_MarktoMarket_MonthEnd_31082009.pdf" > "$MONTHLY_PDF"
+  python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF 31082009
+  cp "$MONTHLY_JSON" "$TEMP_JSON"
 
   # Fetch data from API and append to temporary JSON
-  unset LL_uuuu
-  for LL_uuuu in "${!API_URLs[@]}"; do
-    echo "Fetching $LL_uuuu data from API..."
-    if curl -s "${API_URLs[$LL_uuuu]}" > "$MONTHLY_FILE"; then
+  unset ddLLuuuu
+  for ddLLuuuu in "${!API_URLs[@]}"; do
+    echo "Fetching $ddLLuuuu data from API..."
+    if curl -s "${API_URLs[$ddLLuuuu]}" > "$MONTHLY_PDF"; then
+      echo ${API_URLs[$ddLLuuuu]}
+      python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $ddLLuuuu
       # Check if response is valid JSON
-      if jq empty "$MONTHLY_FILE" 2>/dev/null; then
-        echo "API data fetched successfully"
-        cp "$TEMP_FILE" "$TEMP_TEMP_FILE"
-        jq -s add "$TEMP_TEMP_FILE" "$MONTHLY_FILE" > "$TEMP_FILE"
+      if jq empty "$MONTHLY_JSON" 2>/dev/null; then
+        echo "API data fetched & converted to JSON successfully"
+        cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
+        jq -s add "$TEMP_TEMP_JSON" "$MONTHLY_JSON" > "$TEMP_JSON"
       else
-        echo "Error: API returned invalid JSON"
-        rm -f "$MONTHLY_FILE" "$TEMP_FILE"
+        echo "Error: API data fetched but conversion to JSON failed"
+        rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
         return 1
       fi
     else
       echo "Error: Failed to fetch data from API"
-      rm -f "$MONTHLY_FILE" "$TEMP_FILE"
+      rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
       return 1
     fi
   done
@@ -106,7 +176,7 @@ fetch_api_data() {
 find_newest_local () {
 
   # Get newest local date (convert dd/LL/uuuu HH:mm:ss to uuuu-LL-dd HH:mm:ss for comparison)
-  local newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$dd, $LL, $uuuu] | "\($uuuu)-\($LL)-\($dd) \($time)"] | sort | .[-1]' "$LOCAL_FILE")
+  local newest_local=$(jq -r '[.[] | .["As of"] | (.[4:8] + .[2:4] + .[0:2])] | sort | .[-1]' "$LOCAL_JSON")
   echo "Latest local date: $newest_local"
 
   if [ ! -f "$METADATA_FILE" ]; then
@@ -133,14 +203,14 @@ find_newest_local () {
 }
 
 # Check if this is the first run
-if [ ! -f "$LOCAL_FILE" ]; then
+if [ ! -f "$LOCAL_JSON" ]; then
   echo "Local file doesn't exist. Creating initial file with all API data..."
 
-  # Initiate local file with entire data since 03_1997 for the first run
-  if fetch_api_data 03 1997; then
-    mv "$TEMP_FILE" "$LOCAL_FILE"
-    entry_count=$(jq 'length' "$LOCAL_FILE")
-    echo "Successfully created $LOCAL_FILE with $entry_count entries"
+  # Initiate local file with entire data since 31082009 for the first run
+  if fetch_api_data 08 2009; then
+    mv "$TEMP_JSON" "$LOCAL_JSON"
+    entry_count=$(jq 'length' "$LOCAL_JSON")
+    echo "Successfully created $LOCAL_JSON with $entry_count entries"
 
     # Find and update date of newest local entry
     find_newest_local
@@ -149,7 +219,6 @@ if [ ! -f "$LOCAL_FILE" ]; then
     echo "Failed to create initial file"
     exit 1
   fi
-
 else
 
   echo "Local file exists."
@@ -160,7 +229,7 @@ else
   fi
   newest_local=$(jq -r '.newest_local' $METADATA_FILE)
   newest_local_uuuu=${newest_local:0:4}
-  newest_local_LL=${newest_local:5:2}
+  newest_local_LL=${newest_local:4:2}
   echo "Latest local date: $newest_local"
 
   # Query data since latest month in local file
@@ -170,27 +239,22 @@ else
     # Filter API data for entries newer than newest_local
     new_entries=$(jq --arg newest_local "$newest_local" '
       [.[] | select(
-        (.LAUNCH_DATE | split(" ") as [$date, $time] |
-         ($date | split("/")) as [$dd, $LL, $uuuu] |
-         "\($uuuu)-\($LL)-\($dd) \($time)") > $newest_local
+        (.["As of"] | (.[4:8] + .[2:4] + .[0:2])) > $newest_local
       )]
-    ' "$TEMP_FILE")
-
-    # Check if we found new entries
-    new_count=$(echo "$new_entries" | jq 'length')
+    ' "$TEMP_JSON")
 
     if [ "$new_count" -gt 0 ]; then
       echo "Found $new_count new entries"
 
       # Merge with existing data
-      jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
+      jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_JSON" > "${LOCAL_JSON}.tmp"
 
       if [ $? -eq 0 ]; then
-        mv "${LOCAL_FILE}.tmp" "$LOCAL_FILE"
-        echo "Successfully added $new_count new entries to $LOCAL_FILE"
+        mv "${LOCAL_JSON}.tmp" "$LOCAL_JSON"
+        echo "Successfully added $new_count new entries to $LOCAL_JSON"
 
         # Show total count
-        total_count=$(jq 'length' "$LOCAL_FILE")
+        total_count=$(jq 'length' "$LOCAL_JSON")
         echo "Total entries in local file: $total_count"
 
         # Find and update date of newest local entry
@@ -198,21 +262,19 @@ else
 
       else
         echo "Error: Failed to merge new entries"
-        rm -f "${LOCAL_FILE}.tmp"
+        rm -f "${LOCAL_JSON}.tmp"
         exit 1
       fi
     else
       echo "No new entries found. Local file is up to date."
     fi
   else
-    echo "Failed to fetch API data"
+    echo "fetch_api_data encountered error"
     exit 1
   fi
 fi
 
-echo "GPF data crawler completed successfully!"
+echo "ThaiBMA Bond Price MTM data crawler completed successfully!"
 
 # Clean up temporary files
-rm -f "$MONTHLY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
-
-'
+rm -f "$MONTHLY_JSON" "$MONTHLY_PDF" "$TEMP_JSON" "$TEMP_TEMP_JSON"
