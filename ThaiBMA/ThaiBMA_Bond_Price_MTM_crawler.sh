@@ -148,6 +148,7 @@ fetch_api_data() {
 
   # Fetch data from API and append to temporary JSON
   unset ddLLuuuu
+  success_counter=0
   for ddLLuuuu in "${!API_URLs[@]}"; do
     echo "Fetching $ddLLuuuu data from API..."
     if curl -s "${API_URLs[$ddLLuuuu]}" > "$MONTHLY_PDF"; then
@@ -160,23 +161,26 @@ fetch_api_data() {
           echo "PDF converted to JSON successfully"
           cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
           jq -s add "$TEMP_TEMP_JSON" "$MONTHLY_JSON" > "$TEMP_JSON"
+          success_counter+=1
         else
           echo "Error: PDF fetched but conversion to JSON failed"
           rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
-          return 1
         fi
       else
         echo "Error: Failed to fetch PDF"
         rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
-        return 1
       fi
     else
       echo "Error: Failed to fetch PDF"
       rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
-      return 1
     fi
   done
-  return 0
+  # The function fails only if no JSON entry is generated at all; else proceeds with any number of entries generated regardless of failure.
+  if [[ success_counter -eq 0 ]]; then
+    return 1
+  else
+    return 0
+  fi
 }
 
 # Find date of newest local entry & update metadata file
