@@ -18,9 +18,12 @@ def convert_row_list_to_pandas_DataFrame(data):
     df.columns = df.columns.str.replace('\n', ' ').str.strip()
 
     # Convert numeric columns
+    # Commented out because it produces NaN result on error even when run with errors='ignore' on pandas version below 2.2, i.e., before ignore option is deprecated
+    '''
     numeric_columns = ['Last Exec. Yield', 'Market Yield', 'Clean Price', 'AI %']
     for col in numeric_columns:
         df[col] = pandas.to_numeric(df[col], errors='ignore')
+    '''
 
     # Replace unescaped new line to avoid JSON parsing error
     df = df.replace(r'.\n', '', regex=True)
