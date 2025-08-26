@@ -7,10 +7,10 @@ Scripts for automatic crawling of quotes from different durations into a single 
 
 ## Currently supported sources
 
-- [x] [GPF](https://www.gpf.or.th/thai2019/About/main.php?page=memberfund&lang=en&menu=statistic): all securities, entire duration since inception, up to 15 minutes delay ([more details](#gpf))
-- [ ] [ThaiBMA](https://www.thaibma.or.th/EN/homeEN.aspx)
-  - [ ] [ThaiBMA Bond Indices](https://www.thaibma.or.th/EN/Market/Index/)
-  - [ ] [Bond Price](https://www.thaibma.or.th/EN/Market/BondPrice/BondPrice.aspx)
+- [x] [GPF](#gpf) ([official website 🔗](https://www.gpf.or.th/thai2019/About/main.php?page=memberfund&lang=en&menu=statistic)): all securities, entire duration since inception, up to 15 minutes delay
+- [ ] [ThaiBMA](#thaibma) ([official website 🔗](https://www.thaibma.or.th/EN/homeEN.aspx))
+  - [ ] [ThaiBMA Bond Indices](#thaibma-bond-indices) ([official website 🔗](https://www.thaibma.or.th/EN/Market/Index/))
+  - [x] [Bond Price](#bond-price) ([official website 🔗](https://www.thaibma.or.th/EN/Market/BondPrice/BondPrice.aspx))
 
 ### GPF
 
