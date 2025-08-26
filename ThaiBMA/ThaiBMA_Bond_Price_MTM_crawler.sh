@@ -1,4 +1,4 @@
-[$LL]#!/bin/bash
+#!/bin/bash
 
 # ThaiBMA Bond Price MTM Data Crawler Script
 # Updates local JSON file with new entries from ThaiBMA Bond Price MTM
@@ -151,20 +151,27 @@ fetch_api_data() {
   for ddLLuuuu in "${!API_URLs[@]}"; do
     echo "Fetching $ddLLuuuu data from API..."
     if curl -s "${API_URLs[$ddLLuuuu]}" > "$MONTHLY_PDF"; then
-      echo ${API_URLs[$ddLLuuuu]}
-      python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $ddLLuuuu
-      # Check if response is valid JSON
-      if jq empty "$MONTHLY_JSON" 2>/dev/null; then
-        echo "API data fetched & converted to JSON successfully"
-        cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
-        jq -s add "$TEMP_TEMP_JSON" "$MONTHLY_JSON" > "$TEMP_JSON"
+      # Check if response is valid PDF
+      if [ $(head -c 4 "$FILE") = "%PDF" ]; then
+        echo "PDF fetched successfully"
+        python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $ddLLuuuu
+        # Check if PDF is converted to valid JSON
+        if jq empty "$MONTHLY_JSON" 2>/dev/null; then
+          echo "PDF converted to JSON successfully"
+          cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
+          jq -s add "$TEMP_TEMP_JSON" "$MONTHLY_JSON" > "$TEMP_JSON"
+        else
+          echo "Error: PDF fetched but conversion to JSON failed"
+          rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
+          return 1
+        fi
       else
-        echo "Error: API data fetched but conversion to JSON failed"
+        echo "Error: Failed to fetch PDF"
         rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
         return 1
       fi
     else
-      echo "Error: Failed to fetch data from API"
+      echo "Error: Failed to fetch PDF"
       rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_JSON"
       return 1
     fi
