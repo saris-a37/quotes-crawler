@@ -91,6 +91,7 @@ fetch_api_data() {
         else
           echo "Error: Failed to merge fetched data to $TEMP_FILE"
           rm -f "$MONTHLY_FILE" "$TEMP_TEMP_FILE"
+        fi
       else
         echo "Error: API returned invalid JSON"
         rm -f "$MONTHLY_FILE"
