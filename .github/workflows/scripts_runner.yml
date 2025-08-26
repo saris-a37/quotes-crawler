@@ -38,7 +38,7 @@ jobs:
           chmod +x ./GPF_crawler.sh
           ./GPF_crawler.sh
 
-      # Runs a single command using the runners shell
+      # Commit changes to master @ remote
       - name: Commit
         id: GPF-commit
         run: |
