@@ -596,7 +596,89 @@ from `https://www.thaibma.or.th/api/a3gbi` to [thaibma_a3gbi_data.JSON](...)
 
 #### Bond Price
 
-_planned_
+The scripts crawl PDFs from [ThaiBMA Month-end Marked-to-Market Bond Price Report](https://www.thaibma.or.th/en/market/report/monthly/monthlym2m.aspx), convert to JSON format using [pdfplumber](https://github.com/jsvine/pdfplumber) & [pandas](https://github.com/pandas-dev/pandas), and combine all into a single file [thaibma_bond_price_mtm_data.json](https://raw.githubusercontent.com/saris-a37/quotes-crawler/refs/heads/main/ThaiBMA/thaibma_bond_price_mtm_data.json). The resulting JSON is an array of objects representing rows of the original tables with columns headers as keys; excerpts of table and JSON file are provided below:
+
+As of: 31-Aug-2009
+| Symbol | Maturity | Last Trade Date | Last Exec. Yield | Market Yield | Clean Price | AI % | Currency |
+|--------|----------|-----------------|------------------|--------------|-------------|------|----------|
+| ADB105A | 24-May-2010 | 22-Jul-2009 | 2.41 | 2.370769 | 101.060161 | 1.060274 | THB |
+| ADB119A | 18-Sep-2011 | 27-May-2009 | 3.11 | 3.181966 | 104.219533 | 2.443233 | THB |
+| ADB169A | 18-Sep-2016 | 31-Jul-2009 | 4 | 4.084903 | 108.806988 | 2.53474 | THB |
+| ADLC09904A | 04-Sep-2009 | - | - | 2.029195 | 99.983324 | 0 | THB |
+| ADLC09909A | 09-Sep-2009 | - | - | 2.029195 | 99.955544 | 0 | THB |
+| ADLC09910A | 10-Sep-2009 | - | - | 2.029195 | 99.94999 | 0 | THB |
+
+```
+
+[
+  {
+    "Symbol": "ADB105A",
+    "Maturity": "24-May-2010",
+    "Last Trade Date": "22-Jul-2009",
+    "Last Exec. Yield": 2.41,
+    "Market Yield": 2.370769,
+    "Clean Price": 101.060161,
+    "AI %": 1.060274,
+    "Currency": "THB",
+    "As of": "30082009"
+  },
+  {
+    "Symbol": "ADB119A",
+    "Maturity": "18-Sep-2011",
+    "Last Trade Date": "27-May-2009",
+    "Last Exec. Yield": 3.11,
+    "Market Yield": 3.181966,
+    "Clean Price": 104.219533,
+    "AI %": 2.443233,
+    "Currency": "THB",
+    "As of": "30082009"
+  },
+  {
+    "Symbol": "ADB169A",
+    "Maturity": "18-Sep-2016",
+    "Last Trade Date": "31-Jul-2009",
+    "Last Exec. Yield": 4,
+    "Market Yield": 4.084903,
+    "Clean Price": 108.806988,
+    "AI %": 2.53474,
+    "Currency": "THB",
+    "As of": "30082009"
+  },
+  {
+    "Symbol": "ADLC09904A",
+    "Maturity": "04-Sep-2009",
+    "Last Trade Date": null,
+    "Last Exec. Yield": null,
+    "Market Yield": 2.029195,
+    "Clean Price": 99.983324,
+    "AI %": 0,
+    "Currency": "THB",
+    "As of": "30082009"
+  },
+  {
+    "Symbol": "ADLC09909A",
+    "Maturity": "09-Sep-2009",
+    "Last Trade Date": null,
+    "Last Exec. Yield": null,
+    "Market Yield": 2.029195,
+    "Clean Price": 99.955544,
+    "AI %": 0,
+    "Currency": "THB",
+    "As of": "30082009"
+  },
+  {
+    "Symbol": "ADLC09910A",
+    "Maturity": "10-Sep-2009",
+    "Last Trade Date": null,
+    "Last Exec. Yield": null,
+    "Market Yield": 2.029195,
+    "Clean Price": 99.94999,
+    "AI %": 0,
+    "Currency": "THB",
+    "As of": "30082009"
+  }
+]
+```
 
 ## License
 
