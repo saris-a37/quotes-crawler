@@ -154,7 +154,6 @@ fetch_api_data() {
     if curl -s "${API_URLs[$ddLLuuuu]}" > "$MONTHLY_PDF"; then
       # Check if response is valid PDF
       if [[ $(head -c 4 "$MONTHLY_PDF") == "%PDF" ]]; then
-        echo "PDF fetched successfully"
         python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $ddLLuuuu
         # Check if PDF is converted to valid JSON
         if jq empty "$MONTHLY_JSON" 2>/dev/null; then
