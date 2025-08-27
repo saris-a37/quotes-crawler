@@ -1,57 +1,57 @@
 quotes
-https://www.thaibma.or.th/api/index/?asof=2025-08-21 (ชื่อซ้ำ ต้องแยก)
+https://www.thaibma.or.th/api/index?asof=2025-08-21 (ชื่อซ้ำ ต้องแยก)
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=GOV
+https://www.thaibma.or.th/api/indexavailabledate?BondType=GOV
 
 quotes
-https://www.thaibma.or.th/api/index/?asof=2021-12-31&isShowSubGroup=false
+https://www.thaibma.or.th/api/index?isShowSubGroup=false&asof=2021-12-31
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=corporate-Trade
+https://www.thaibma.or.th/api/indexavailabledate?BondType=corporate-Trade
 
 quotes
-https://www.thaibma.or.th/api/CompositeIndex/?IndexType=Composite(Corp)&asof=2025-08-21
+https://www.thaibma.or.th/api/CompositeIndex?IndexType=Composite(Corp)&asof=2025-08-21
 range
-https://www.thaibma.or.th/api/CompositeIndex/
+https://www.thaibma.or.th/api/CompositeIndex
 
 quotes
-https://www.thaibma.or.th/api/zrrindex/?asof=2025-08-21&ratingName=RF
+https://www.thaibma.or.th/api/zrrindex?ratingName=RF&asof=2025-08-21
 range
-https://www.thaibma.or.th/api/ZrrIndex/?ratingName=RF
+https://www.thaibma.or.th/api/ZrrIndex?ratingName=RF
 
 quotes
-https://www.thaibma.or.th/api/index?asof=2011-06-29&bondtype=TB
+https://www.thaibma.or.th/api/index?bondtype=TB&asof=2011-06-29
 range
 https://www.thaibma.or.th/api/indexavailabledate?BondType=TB
 
 quotes
-https://www.thaibma.or.th/api/index/?asof=2025-08-21&bondType=CP
+https://www.thaibma.or.th/api/index?bondType=CP&asof=2025-08-21
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=CP
+https://www.thaibma.or.th/api/indexavailabledate?BondType=CP
 
 quotes
-https://www.thaibma.or.th/api/index/?asof=2025-08-21&bondType=shortterm
+https://www.thaibma.or.th/api/index?bondType=shortterm&asof=2025-08-21
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=shortterm
+https://www.thaibma.or.th/api/indexavailabledate?BondType=shortterm
 
 quotes
-https://www.thaibma.or.th/api/index/?asof=2025-08-21&bondType=GOV-MTM
+https://www.thaibma.or.th/api/index?bondType=GOV-MTM&asof=2025-08-21
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=GOV-MTM
+https://www.thaibma.or.th/api/indexavailabledate?BondType=GOV-MTM
 
 quotes
-https://www.thaibma.or.th/api/index/?asof=2025-08-21&bondType=corporate (ชื่อซ้ำ แต่ไม่ต้องแยก ใช้ Rating กับ RatingOrder ช่วย)
+https://www.thaibma.or.th/api/index?bondType=corporate&asof=2025-08-21 (ชื่อซ้ำ แต่ไม่ต้องแยก ใช้ Rating กับ RatingOrder ช่วย)
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=corporate
+https://www.thaibma.or.th/api/indexavailabledate?BondType=corporate
 
 quotes
-https://www.thaibma.or.th/api/index/?asof=2025-08-21&bondType=FixedTerm-Corporate (ชื่อซ้ำ แต่ไม่ต้องแยก ใช้ Rating กับ RatingOrder ช่วย)
+https://www.thaibma.or.th/api/index?bondType=FixedTerm-Corporate&asof=2025-08-21 (ชื่อซ้ำ แต่ไม่ต้องแยก ใช้ Rating กับ RatingOrder ช่วย)
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=FixedTerm-Corporate
+https://www.thaibma.or.th/api/indexavailabledate?BondType=FixedTerm-Corporate
 
 quotes
-https://www.thaibma.or.th/api/index/?asof=2025-08-21&bondType=esg (ชื่อซ้ำ แต่ไม่ต้องแยก ใช้ Rating กับ RatingOrder ช่วย)
+https://www.thaibma.or.th/api/index?bondType=esg&asof=2025-08-21 (ชื่อซ้ำ แต่ไม่ต้องแยก ใช้ Rating กับ RatingOrder ช่วย)
 range
-https://www.thaibma.or.th/api/indexavailabledate/?BondType=esg
+https://www.thaibma.or.th/api/indexavailabledate?BondType=esg
 
 quotes
 https://www.thaibma.or.th/api/a3gbi?asof=2025-08-21
