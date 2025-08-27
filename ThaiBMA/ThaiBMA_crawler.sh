@@ -89,3 +89,9 @@ declare -A RANGE_API_URL_SEARCH
 RANGE_API_URL="${API_URL_ORIGIN}${RANGE_API_URL_PATH[$INDEX]}${RANGE_API_URL_SEARCH[$INDEX]}"
 
 echo "Starting ThaiBMA data crawler..."
+
+# Check if jq is installed
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. Please install jq first."
+  exit 1
+fi
