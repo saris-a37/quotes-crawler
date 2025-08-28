@@ -3,6 +3,10 @@
 # GPF Data Crawler Script
 # Updates local JSON file with new entries from Thai GPF API
 
+: '
+Variables storing date & time data are named according to their format using GNU date format specifier (https://www.gnu.org/software/coreutils/manual/html_node/Date-format-specifiers.html)
+'
+
 # Local JSON
 LOCAL_FILE="gpf_data.json"
 
@@ -34,53 +38,31 @@ fi
 fetch_api_data() {
 
   # Input month-year query range
-  local LL_start=$1
-  local uuuu_start=$2
-  local LL_end=`date +"%m"`
-  local uuuu_end=`date +"%Y"`
+  local m_Y_start=$1
+  local F_start=$(date -d "${m_Y_start:3:4}-${m_Y_start:0:2}-01" +"%F")
+  local F_end=`date +"%F"`
 
   # Reset API URLs list
   API_URLs=()
 
-  # Loop through years then months to generate API URLs list within query range
-  if [[ uuuu_start -ne uuuu_end ]]; then
-    uuuu=$uuuu_start
-    for ((LL=$((10#$LL_start));LL<=12;LL++)); do
-      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-      API_URL="${API_URL_BASE}${LL_uuuu}"
-      API_URLs["$LL_uuuu"]=$API_URL
-    done
-    for ((uuuu=uuuu_start+1;uuuu<uuuu_end;uuuu++)); do
-      for ((LL=1;LL<=12;LL++)); do
-        printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-        API_URL="${API_URL_BASE}${LL_uuuu}"
-        API_URLs["$LL_uuuu"]=$API_URL
-      done
-    done
-    uuuu=$uuuu_end
-    for ((LL=1;LL<=$((10#$LL_end));LL++)); do
-      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-      API_URL="${API_URL_BASE}${LL_uuuu}"
-      API_URLs["$LL_uuuu"]=$API_URL
-    done;
-  else
-    uuuu=$uuuu_start
-    for ((LL=$((10#$LL_start));LL<=$((10#$LL_end));LL++)); do
-      printf -v LL_uuuu "%02d_%04d" $LL $uuuu
-      API_URL="${API_URL_BASE}${LL_uuuu}"
-      API_URLs["$LL_uuuu"]=$API_URL
-    done
-  fi
+  # Loop through months to generate API URLs list within query range
+  local F=$F_start
+  until [[ $F > $F_end ]]; do
+    m_Y=$(date -d $F +"%m_%Y")
+    API_URL="${API_URL_BASE}${m_Y}"
+    API_URLs["$m_Y"]=$API_URL
+    F=$(date -d "$F + 1 month" +"%F")
+  done
 
   # Create temporary JSON file with the same format as in API using 03_1997 data as dummy
   curl -s "https://www.gpf.or.th/thai2019/About/memberfund-api.php?pageName=NAVBottom_03_1997" > "$TEMP_FILE"
 
   # Fetch data from API and append to temporary JSON
-  unset LL_uuuu
+  unset m_Y
   success_counter=0
-  for LL_uuuu in "${!API_URLs[@]}"; do
-    echo "Fetching $LL_uuuu data from API..."
-    if curl -s "${API_URLs[$LL_uuuu]}" > "$MONTHLY_FILE"; then
+  for m_Y in "${!API_URLs[@]}"; do
+    echo "Fetching $m_Y data from API..."
+    if curl -s "${API_URLs[$m_Y]}" > "$MONTHLY_FILE"; then
       # Check if response is valid JSON
       if jq empty "$MONTHLY_FILE" 2>/dev/null; then
         cp "$TEMP_FILE" "$TEMP_TEMP_FILE"
@@ -112,27 +94,27 @@ fetch_api_data() {
 # Find date of newest local entry & update metadata file
 find_newest_local () {
 
-  # Get newest local date (convert dd/LL/uuuu HH:mm:ss to uuuu-LL-dd HH:mm:ss for comparison)
-  local newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$dd, $LL, $uuuu] | "\($uuuu)-\($LL)-\($dd) \($time)"] | sort | .[-1]' "$LOCAL_FILE")
-  echo "Latest local date: $newest_local"
+  # Get newest local date (convert dd/m/Y HH:mm:ss to Y-m-dd HH:mm:ss for comparison)
+  local F_newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$dd, $m, $Y] | "\($Y)-\($m)-\($dd)"] | sort | .[-1]' "$LOCAL_FILE")
+  echo "Latest local date: $F_newest_local"
 
   if [ ! -f "$METADATA_FILE" ]; then
-    jq -n --arg nl "$newest_local" '{"newest_local": $nl}' > $METADATA_FILE
+    jq -n --arg nl "$F_newest_local" '{"newest_local": $nl}' > $METADATA_FILE
     if [ $? -eq 0 ]; then
       echo "No metadata file existed, successfully created new metadata file with updated value(s)"
       return 0
     else
-      echo "No metadata file existed, failed to create new metadata file"
+      echo "Error: No metadata file existed, failed to create new metadata file"
       return 1
     fi
   else
-    jq -n --arg nl "$newest_local" '.newest_local = $nl' $METADATA_FILE > "${METADATA_FILE}.tmp"
+    jq -n --arg nl "$F_newest_local" '.newest_local = $nl' $METADATA_FILE > "${METADATA_FILE}.tmp"
     if [ $? -eq 0 ]; then
       mv "${METADATA_FILE}.tmp" "$METADATA_FILE"
       echo "Successfully updated metadata file"
       return 0
     else
-      echo "Failed to update metadata file"
+      echo "Error: Failed to update metadata file"
       rm -f "${METADATA_FILE}.tmp"
       return 1
     fi
@@ -144,7 +126,7 @@ if [ ! -f "$LOCAL_FILE" ]; then
   echo "Local file doesn't exist. Creating initial file with all API data..."
 
   # Initiate local file with entire data since 03_1997 for the first run
-  if fetch_api_data 03 1997; then
+  if fetch_api_data "03_1997"; then
     mv "$TEMP_FILE" "$LOCAL_FILE"
     entry_count=$(jq 'length' "$LOCAL_FILE")
     echo "Successfully created $LOCAL_FILE with $entry_count entries"
@@ -153,7 +135,7 @@ if [ ! -f "$LOCAL_FILE" ]; then
     find_newest_local
 
   else
-    echo "Failed to create initial file"
+    echo "Error: Failed to create initial file"
     exit 1
   fi
 
@@ -165,21 +147,19 @@ else
   if [ ! -f "$METADATA_FILE" ]; then
     find_newest_local
   fi
-  newest_local=$(jq -r '.newest_local' $METADATA_FILE)
-  newest_local_uuuu=${newest_local:0:4}
-  newest_local_LL=${newest_local:5:2}
-  echo "Latest local date: $newest_local"
+  F_newest_local=$(jq -r '.newest_local' $METADATA_FILE)
+  echo "Latest local date: $F_newest_local"
 
   # Query data since latest month in local file
   echo "Checking for new entries..."
-  if fetch_api_data $newest_local_LL $newest_local_uuuu; then
+  if fetch_api_data "${F_newest_local:5:2}_${F_newest_local:0:4}"; then
 
     # Filter API data for entries newer than newest_local
-    new_entries=$(jq --arg newest_local "$newest_local" '
+    new_entries=$(jq --arg F_newest_local "$F_newest_local" '
       [.[] | select(
         (.LAUNCH_DATE | split(" ") as [$date, $time] |
-         ($date | split("/")) as [$dd, $LL, $uuuu] |
-         "\($uuuu)-\($LL)-\($dd) \($time)") > $newest_local
+         ($date | split("/")) as [$d, $m, $Y] |
+         "\($Y)-\($m)-\($d)") > $F_newest_local
       )]
     ' "$TEMP_FILE")
 
@@ -198,7 +178,7 @@ else
 
         # Show total count
         total_count=$(jq 'length' "$LOCAL_FILE")
-        echo "Total entries in local file: $total_count"
+        echo "Total entries in $LOCAL_FILE: $total_count"
 
         # Find and update date of newest local entry
         find_newest_local
@@ -212,7 +192,7 @@ else
       echo "No new entries found. Local file is up to date."
     fi
   else
-    echo "Failed to fetch API data"
+    echo "Error: Failed to fetch API data"
     exit 1
   fi
 fi
