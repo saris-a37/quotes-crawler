@@ -3,6 +3,10 @@
 # ThaiBMA Bond Price MTM Data Crawler Script
 # Updates local JSON file with new entries from ThaiBMA Bond Price MTM
 
+: '
+Variables storing date & time data are named according to their format using GNU date format specifier (https://www.gnu.org/software/coreutils/manual/html_node/Date-format-specifiers.html)
+'
+
 # Local JSON
 LOCAL_JSON="thaibma_bond_price_mtm_data.json"
 
