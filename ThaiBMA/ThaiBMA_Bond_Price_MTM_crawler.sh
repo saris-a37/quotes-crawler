@@ -43,103 +43,23 @@ done
 fetch_api_data() {
 
   # Input month-year query range
-  local LL_start=$1
-  local uuuu_start=$2
-  local LL_end=`date +"%m"`
-  local uuuu_end=`date +"%Y"`
+  local dmY_start=$1
+  local F_start=$(date -d "${dmY_start:4:4}-${dmY_start:2:2}-${dmY_start:0:2}" +"%F")
+  local F_end=`date +"%F"`
 
   # Reset API URLs list
   API_URLs=()
 
-  # Loop through years then months to generate API URLs list within query range
-  declare -A last_dd
-    last_dd[1]="31"
-    last_dd[3]="31"
-    last_dd[4]="30"
-    last_dd[5]="31"
-    last_dd[6]="30"
-    last_dd[7]="31"
-    last_dd[8]="31"
-    last_dd[9]="30"
-    last_dd[10]="31"
-    last_dd[11]="30"
-    last_dd[12]="31"
-  if [[ uuuu_start -ne uuuu_end ]]; then
-    uuuu=$uuuu_start
-    for ((LL=$((10#$LL_start));LL<=12;LL++)); do
-      if [[ LL -eq 2 ]]; then
-        if [[ uuuu%4 -eq 0 ]]; then
-          printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
-          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-          API_URLs["$ddLLuuuu"]=$API_URL
-        else
-          printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
-          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-          API_URLs["$ddLLuuuu"]=$API_URL
-        fi
-      else
-        printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
-        API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-        API_URLs["$ddLLuuuu"]=$API_URL
-      fi
-    done
-    for ((uuuu=uuuu_start+1;uuuu<uuuu_end;uuuu++)); do
-      for ((LL=1;LL<=12;LL++)); do
-        if [[ LL -eq 2 ]]; then
-          if [[ uuuu%4 -eq 0 ]]; then
-            printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
-            API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-            API_URLs["$ddLLuuuu"]=$API_URL
-          else
-            printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
-            API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-            API_URLs["$ddLLuuuu"]=$API_URL
-          fi
-        else
-          printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
-          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-          API_URLs["$ddLLuuuu"]=$API_URL
-        fi
-      done
-    done
-    uuuu=$uuuu_end
-    for ((LL=1;LL<=$((10#$LL_end));LL++)); do
-      if [[ LL -eq 2 ]]; then
-        if [[ uuuu%4 -eq 0 ]]; then
-          printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
-          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-          API_URLs["$ddLLuuuu"]=$API_URL
-        else
-          printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
-          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-          API_URLs["$ddLLuuuu"]=$API_URL
-        fi
-      else
-        printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
-        API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-        API_URLs["$ddLLuuuu"]=$API_URL
-      fi
-    done;
-  else
-    uuuu=$uuuu_start
-    for ((LL=$((10#$LL_start));LL<=$((10#$LL_end));LL++)); do
-      if [[ LL -eq 2 ]]; then
-        if [[ uuuu%4 -eq 0 ]]; then
-          printf -v ddLLuuuu "29%02d%04d" $LL $uuuu
-          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-          API_URLs["$ddLLuuuu"]=$API_URL
-        else
-          printf -v ddLLuuuu "28%02d%04d" $LL $uuuu
-          API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-          API_URLs["$ddLLuuuu"]=$API_URL
-        fi
-      else
-        printf -v ddLLuuuu ${last_dd[$LL]}"%02d%04d" $LL $uuuu
-        API_URL="${API_URL_BASE}${ddLLuuuu}${API_URL_FILE_EXTENSION}"
-        API_URLs["$ddLLuuuu"]=$API_URL
-      fi
-    done
-  fi
+  # Loop through monthends to generate API URLs list within query range
+  F=$F_start
+  until [[ $F > $F_end ]]; do
+    dmY=$(date -d $F +"%d%m%Y")
+    API_URL="${API_URL_BASE}${dmY}${API_URL_FILE_EXTENSION}"
+    API_URLs["$dmY"]=$API_URL
+    F=$(date -d "$F + 1 day" +"%F")
+    F=$(date -d "$F + 1 month" +"%F")
+    F=$(date -d "$F - 1 day" +"%F")
+  done
 
   # Create temporary JSON file with the same format as in API using 31082009 data as dummy
   curl -s "https://www.thaibma.or.th/download/monthly/m2m/ThaiBMA_MarktoMarket_MonthEnd_31082009.pdf" > "$MONTHLY_PDF"
@@ -147,14 +67,14 @@ fetch_api_data() {
   cp "$MONTHLY_JSON" "$TEMP_JSON"
 
   # Fetch data from API and append to temporary JSON
-  unset ddLLuuuu
+  unset dmY
   success_counter=0
-  for ddLLuuuu in "${!API_URLs[@]}"; do
-    echo "Fetching $ddLLuuuu data from API..."
-    if curl -s "${API_URLs[$ddLLuuuu]}" > "$MONTHLY_PDF"; then
+  for dmY in "${!API_URLs[@]}"; do
+    echo "Fetching $dmY data from API..."
+    if curl -s "${API_URLs[$dmY]}" > "$MONTHLY_PDF"; then
       # Check if response is valid PDF
       if [[ $(head -c 4 "$MONTHLY_PDF") == "%PDF" ]]; then
-        python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $ddLLuuuu
+        python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $dmY
         # Check if PDF is converted to valid JSON
         if jq empty "$MONTHLY_JSON" 2>/dev/null; then
           cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
@@ -190,27 +110,27 @@ fetch_api_data() {
 # Find date of newest local entry & update metadata file
 find_newest_local () {
 
-  # Get newest local date (convert dd/LL/uuuu HH:mm:ss to uuuu-LL-dd HH:mm:ss for comparison)
-  local newest_local=$(jq -r '[.[] | .["As of"] | (.[4:8] + .[2:4] + .[0:2])] | sort | .[-1]' "$LOCAL_JSON")
-  echo "Latest local date: $newest_local"
+  # Get newest local date (convert dd/m/Y to Y-m-dd for comparison)
+  local F_newest_local=$(jq -r '[.[] | .["As of"] | (.[4:8] + "-" + .[2:4] + "-" + .[0:2])] | sort | .[-1]' "$LOCAL_JSON")
+  echo "Latest local date: $F_newest_local"
 
   if [ ! -f "$METADATA_FILE" ]; then
-    jq -n --arg nl "$newest_local" '{"newest_local": $nl}' > $METADATA_FILE
+    jq -n --arg nl "$F_newest_local" '{"newest_local": $nl}' > $METADATA_FILE
     if [ $? -eq 0 ]; then
       echo "No metadata file existed, successfully created new metadata file with updated value(s)"
       return 0
     else
-      echo "No metadata file existed, failed to create new metadata file"
+      echo "Error: No metadata file existed, failed to create new metadata file"
       return 1
     fi
   else
-    jq -n --arg nl "$newest_local" '.newest_local = $nl' $METADATA_FILE > "${METADATA_FILE}.tmp"
+    jq -n --arg nl "$F_newest_local" '.newest_local = $nl' $METADATA_FILE > "${METADATA_FILE}.tmp"
     if [ $? -eq 0 ]; then
       mv "${METADATA_FILE}.tmp" "$METADATA_FILE"
       echo "Successfully updated metadata file"
       return 0
     else
-      echo "Failed to update metadata file"
+      echo "Error: Failed to update metadata file"
       rm -f "${METADATA_FILE}.tmp"
       return 1
     fi
@@ -222,7 +142,7 @@ if [ ! -f "$LOCAL_JSON" ]; then
   echo "Local file doesn't exist. Creating initial file with all API data..."
 
   # Initiate local file with entire data since 31082009 for the first run
-  if fetch_api_data 08 2009; then
+  if fetch_api_data "31082009"; then
     mv "$TEMP_JSON" "$LOCAL_JSON"
     entry_count=$(jq 'length' "$LOCAL_JSON")
     echo "Successfully created $LOCAL_JSON with $entry_count entries"
@@ -231,7 +151,7 @@ if [ ! -f "$LOCAL_JSON" ]; then
     find_newest_local
 
   else
-    echo "Failed to create initial file"
+    echo "Error: Failed to create initial file"
     exit 1
   fi
 else
@@ -242,19 +162,17 @@ else
   if [ ! -f "$METADATA_FILE" ]; then
     find_newest_local
   fi
-  newest_local=$(jq -r '.newest_local' $METADATA_FILE)
-  newest_local_uuuu=${newest_local:0:4}
-  newest_local_LL=${newest_local:4:2}
-  echo "Latest local date: $newest_local"
+  F_newest_local=$(jq -r '.newest_local' $METADATA_FILE)
+  echo "Latest local date: $F_newest_local"
 
   # Query data since latest month in local file
   echo "Checking for new entries..."
-  if fetch_api_data $newest_local_LL $newest_local_uuuu; then
+  if fetch_api_data "${F_newest_local:8:2}${F_newest_local:5:2}${F_newest_local:0:4}"; then
 
     # Filter API data for entries newer than newest_local
-    new_entries=$(jq --arg newest_local "$newest_local" '
+    new_entries=$(jq --arg F_newest_local "$F_newest_local" '
       [.[] | select(
-        (.["As of"] | (.[4:8] + .[2:4] + .[0:2])) > $newest_local
+        (.["As of"] | (.[4:8] + "-" + .[2:4] + "-" + .[0:2])) > $F_newest_local
       )]
     ' "$TEMP_JSON")
 
@@ -270,7 +188,7 @@ else
 
         # Show total count
         total_count=$(jq 'length' "$LOCAL_JSON")
-        echo "Total entries in local file: $total_count"
+        echo "Total entries in $LOCAL_JSON: $total_count"
 
         # Find and update date of newest local entry
         find_newest_local
@@ -284,7 +202,7 @@ else
       echo "No new entries found. Local file is up to date."
     fi
   else
-    echo "fetch_api_data encountered error"
+    echo "Error: fetch_api_data encountered error"
     exit 1
   fi
 fi
