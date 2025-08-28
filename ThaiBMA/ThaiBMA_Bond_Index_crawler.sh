@@ -97,7 +97,7 @@ RANGE_FILE="${FILE_PREFIX[$INDEX]}_range.json"
 F_first=""
 F_latest=""
 
-echo "Starting ThaiBMA data crawler..."
+echo "Starting ThaiBMA data crawler for $INDEX..."
 
 # Check if jq is installed
 if ! command -v jq &> /dev/null; then
@@ -224,7 +224,7 @@ find_newest_local () {
 
 # Fetch API data range
 if fetch_api_range; then
-  echo "Successfully fetched API data range"
+  echo "Successfully fetched API data range: $F_first to $F_latest"
 else
   echo "Error, failed to fetch API data range"
   exit 1
@@ -259,48 +259,54 @@ else
   F_newest_local=$(jq -r '.newest_local' $METADATA_FILE)
   echo "Latest local date: $F_newest_local"
 
-  # Query data since latest day in local file
-  echo "Checking for new entries..."
-  if fetch_api_data $F_newest_local; then
+  # Check if there is newer data in the API
+  if [[ "$F_latest" > "$F_newest_local" ]]; then
 
-    # Filter API data for entries newer than newest_local; ThaiBMA API uses ISO 8601 date & time format. No reformatting is necessary.
-    new_entries=$(jq --arg F_newest_local "$F_newest_local" '[.[] | select((.Asof | split("T") as [$F, $T] | $F) > $F_newest_local)]' "$TEMP_FILE")
+    # Query data since latest day in local file
+    echo "Checking for new entries..."
+    if fetch_api_data $F_newest_local; then
 
-    # Check if we found new entries
-    new_count=$(echo "$new_entries" | jq 'length')
+      # Filter API data for entries newer than newest_local; ThaiBMA API uses ISO 8601 date & time format. No reformatting is necessary.
+      new_entries=$(jq --arg F_newest_local "$F_newest_local" '[.[] | select((.Asof | split("T") as [$F, $T] | $F) > $F_newest_local)]' "$TEMP_FILE")
 
-    if [ "$new_count" -gt 0 ]; then
-      echo "Found $new_count new entries"
+      # Check if we found new entries
+      new_count=$(echo "$new_entries" | jq 'length')
 
-      # Merge with existing data
-      jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
+      if [ "$new_count" -gt 0 ]; then
+        echo "Found $new_count new entries"
 
-      if [ $? -eq 0 ]; then
-        mv "${LOCAL_FILE}.tmp" "$LOCAL_FILE"
-        echo "Successfully added $new_count new entries to $LOCAL_FILE"
+        # Merge with existing data
+        jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
 
-        # Show total count
-        total_count=$(jq 'length' "$LOCAL_FILE")
-        echo "Total entries in $LOCAL_FILE: $total_count"
+        if [ $? -eq 0 ]; then
+          mv "${LOCAL_FILE}.tmp" "$LOCAL_FILE"
+          echo "Successfully added $new_count new entries to $LOCAL_FILE"
 
-        # Find and update date of newest local entry
-        find_newest_local
+          # Show total count
+          total_count=$(jq 'length' "$LOCAL_FILE")
+          echo "Total entries in $LOCAL_FILE: $total_count"
 
+          # Find and update date of newest local entry
+          find_newest_local
+
+        else
+          echo "Error: Failed to merge new entries"
+          rm -f "${LOCAL_FILE}.tmp"
+          exit 1
+        fi
       else
-        echo "Error: Failed to merge new entries"
-        rm -f "${LOCAL_FILE}.tmp"
-        exit 1
+        echo "No new entries found. Local file is up to date."
       fi
     else
-      echo "No new entries found. Local file is up to date."
+      echo "Error: Failed to fetch API data"
+      exit 1
     fi
   else
-    echo "Error: Failed to fetch API data"
-    exit 1
+    echo "No newer data in API. Local file is up to date"
   fi
 fi
 
-echo "ThaiBMA Bond Index data crawler completed successfully!"
+echo "ThaiBMA Bond Index data crawler for $INDEX completed successfully!"
 
 # Clean up temporary files
 rm -f "$DAILY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
