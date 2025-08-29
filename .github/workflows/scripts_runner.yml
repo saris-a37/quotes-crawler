@@ -12,7 +12,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+
   GPF:
     # Set running environments to be the same as local machine the scripts were tested on
     runs-on: ubuntu-latest
@@ -27,10 +27,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       # Make GPF_crawler.sh executable, then run
       - name: Execute
@@ -58,6 +60,67 @@ jobs:
           username: ${{ secrets.GMAIL }}
           password: ${{ secrets.GMAIL_APP_PASS }}
           subject: New automatic commit to quotes-crawler/GPF
-          body: New automatic commit to quotes-crawler/GPF (https://github.com/saris-a37/quotes-crawler/tree/main/GPF) by scripts_runner.yml
+          body: New automatic GPF commit to quotes-crawler/GPF (https://github.com/saris-a37/quotes-crawler/tree/main/GPF) by scripts_runner.yml
+          to: ${{ secrets.USER_EMAIL }}
+          from: saris-a37/quotes-crawler
+
+  ThaiBMA Bond Index:
+    # Set running environments to be the same as local machine the scripts were tested on
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./ThaiBMA
+
+    # Grant write content permission to the job
+    permissions:
+      contents: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # Make GPF_crawler.sh executable, then run
+      - name: Execute
+        run: |
+          chmod +x ./ThaiBMA_Bond_Index_crawler.sh
+          ./ThaiBMA_Bond_Index_crawler.sh corp
+          ./ThaiBMA_Bond_Index_crawler.sh comp
+          ./ThaiBMA_Bond_Index_crawler.sh ZRR
+          ./ThaiBMA_Bond_Index_crawler.sh TB
+          ./ThaiBMA_Bond_Index_crawler.sh CP
+          ./ThaiBMA_Bond_Index_crawler.sh gov-shortterm
+          ./ThaiBMA_Bond_Index_crawler.sh gov-MTM
+          ./ThaiBMA_Bond_Index_crawler.sh corp-MTM
+          ./ThaiBMA_Bond_Index_crawler.sh corp-fixedterm
+          ./ThaiBMA_Bond_Index_crawler.sh ESG
+          ./ThaiBMA_Bond_Index_crawler.sh a3gbi
+
+      # Commit changes to master @ remote
+      - name: Commit
+        id: ThaiBMA-Bond-Index-commit
+        run: |
+          git config --global user.name '${{ secrets.USER_NAME }}'
+          git config --global user.email '${{ secrets.USER_EMAIL }}'
+          git add .
+          git commit -am "ThaiBMA Bond Index Scripts Runner (automated)"
+          git push
+
+      # Notify if there was a commit to GPF
+      - name: Notify
+        if: steps.ThaiBMA-Bond-Index-commit.outcome == 'success'
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL }}
+          password: ${{ secrets.GMAIL_APP_PASS }}
+          subject: New automatic commit to quotes-crawler/ThaiBMA
+          body: New automatic ThaiBMA Bond Index commit to quotes-crawler/ThaiBMA (https://github.com/saris-a37/quotes-crawler/tree/main/GPF) by scripts_runner.yml
           to: ${{ secrets.USER_EMAIL }}
           from: saris-a37/quotes-crawler
