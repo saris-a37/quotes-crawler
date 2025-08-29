@@ -64,7 +64,7 @@ jobs:
           to: ${{ secrets.USER_EMAIL }}
           from: saris-a37/quotes-crawler
 
-  ThaiBMA Bond Index:
+  ThaiBMA_Bond_Index:
     # Set running environments to be the same as local machine the scripts were tested on
     runs-on: ubuntu-latest
     defaults:
