@@ -5,8 +5,8 @@ name: Scripts Runner
 # Controls when the workflow will run
 on:
   # Automatically run workflow with cron schedule
-  schedule:
-    - cron: '5/15 * * * *'
+  #schedule:
+    #- cron: '5/15 * * * *'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
