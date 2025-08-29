@@ -5,14 +5,14 @@ name: ThaiBMA Bond Price MTM Runner
 # Controls when the workflow will run
 on:
   # Automatically run workflow with cron schedule
-  #schedule:
-    #- cron: '5/15 * * * *'
+  schedule:
+    - cron: '0 8 * * 2-6'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+
   ThaiBMA_Bond_Price_MTM:
     runs-on: ubuntu-latest
     defaults:
@@ -26,16 +26,18 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       # Set-up Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13' 
+          python-version: '3.13'
 
       # Install Dependencies
       - name: Install Dependencies
@@ -71,6 +73,6 @@ jobs:
           username: ${{ secrets.GMAIL }}
           password: ${{ secrets.GMAIL_APP_PASS }}
           subject: New automatic commit to quotes-crawler/ThaiBMA
-          body: New automatic commit to quotes-crawler/ThaiBMA (https://github.com/saris-a37/quotes-crawler/tree/main/ThaiBMA) by ThaiBMA_Bond_Price_MTM_runner.yml
+          body: New automatic ThaiBMA Bond Price MTM commit to quotes-crawler/ThaiBMA (https://github.com/saris-a37/quotes-crawler/tree/main/ThaiBMA) by ThaiBMA_Bond_Price_MTM_runner.yml
           to: ${{ secrets.USER_EMAIL }}
           from: saris-a37/quotes-crawler
