@@ -61,7 +61,7 @@ jobs:
           git config --global user.email '${{ secrets.USER_EMAIL }}'
           git add .
           git commit -am "ThaiBMA Bond Price MTM Runner Scripts Runner (automated)"
-          git push
+          git push -f origin main
 
       # Notify if there was a commit to ThaiBMA Bond Price MTM
       - name: Notify
