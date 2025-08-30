@@ -196,7 +196,11 @@ fetch_api_data() {
 find_newest_local () {
 
   # Get newest local date; ThaiBMA API uses ISO 8601 date & time format. No reformatting is necessary.
-  local F_newest_local=$(jq -r '[.[] | .Asof | split("T") as [$F, $T] | $F] | sort | .[-1]' "$LOCAL_FILE")
+  if [[ "$INDEX" == "a3gbi" ]]; then
+    local F_newest_local=$(jq -r '[.[] | .IndexDate | split("T") as [$F, $T] | $F] | sort | .[-1]' "$LOCAL_FILE")
+  else
+    local F_newest_local=$(jq -r '[.[] | .Asof | split("T") as [$F, $T] | $F] | sort | .[-1]' "$LOCAL_FILE")
+  fi
   echo "Latest local date: $F_newest_local"
 
   if [ ! -f "$METADATA_FILE" ]; then
@@ -267,7 +271,11 @@ else
     if fetch_api_data $F_newest_local; then
 
       # Filter API data for entries newer than newest_local; ThaiBMA API uses ISO 8601 date & time format. No reformatting is necessary.
-      new_entries=$(jq --arg F_newest_local "$F_newest_local" '[.[] | select((.Asof | split("T") as [$F, $T] | $F) > $F_newest_local)]' "$TEMP_FILE")
+      if [[ "$INDEX" == "a3gbi" ]]; then
+        new_entries=$(jq --arg F_newest_local "$F_newest_local" '[.[] | select((.IndexDate | split("T") as [$F, $T] | $F) > $F_newest_local)]' "$TEMP_FILE")
+      else
+        new_entries=$(jq --arg F_newest_local "$F_newest_local" '[.[] | select((.Asof | split("T") as [$F, $T] | $F) > $F_newest_local)]' "$TEMP_FILE")
+      fi
 
       # Check if we found new entries
       new_count=$(echo "$new_entries" | jq 'length')
