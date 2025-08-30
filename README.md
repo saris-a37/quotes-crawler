@@ -8,9 +8,9 @@ Scripts for automatic crawling of quotes from different durations into a single 
 ## Currently supported sources
 
 - [x] [GPF](#gpf) ([official website 🔗](https://www.gpf.or.th/thai2019/About/main.php?page=memberfund&lang=en&menu=statistic)): all securities, entire duration since inception, up to 15 minutes delay
-- [ ] [ThaiBMA](#thaibma) ([official website 🔗](https://www.thaibma.or.th/EN/homeEN.aspx))
-  - [ ] [ThaiBMA Bond Indices](#thaibma-bond-indices) ([official website 🔗](https://www.thaibma.or.th/EN/Market/Index/))
-  - [x] [Bond Price](#bond-price) ([official website 🔗](https://www.thaibma.or.th/EN/Market/BondPrice/BondPrice.aspx))
+- [x] [ThaiBMA](#thaibma) ([official website 🔗](https://www.thaibma.or.th/EN/homeEN.aspx))
+  - [x] [ThaiBMA Bond Indices](#thaibma-bond-indices) ([official website 🔗](https://www.thaibma.or.th/EN/Market/Index/)): all indices, entire duration available, up to 15 minutes delay
+  - [x] [Bond Price](#bond-price) ([official website 🔗](https://www.thaibma.or.th/EN/Market/BondPrice/BondPrice.aspx)): all securities, entire duration available, up to 1-3 days delay
 
 ### GPF
 
@@ -101,8 +101,6 @@ All past and present GPF's securities listed on its website is currently support
 ### ThaiBMA
 
 #### ThaiBMA Bond Indices
-
-_under construction_
 
 The scripts combine JSONs from `thaibma.or.th`'s API (https://www.thaibma.or.th/api/), which is the source of monthly datasets shown in [ThaiBMA's bond indices page](https://www.thaibma.or.th/EN/Market/Index/), into a single file for each `bondType` query key. The resulting JSON is in the original format queried from the API; an excerpt is provided below with keys:
 
