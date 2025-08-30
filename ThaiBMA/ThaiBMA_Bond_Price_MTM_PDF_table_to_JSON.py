@@ -6,7 +6,7 @@ import pandas
 
 # Get command-line arguments
 pdffile = sys.argv[1]
-ddLLuuuu = sys.argv[2]
+dmY = sys.argv[2]
 
 # Convert Python list to pandas DataFrame
 def convert_row_list_to_pandas_DataFrame(data):
@@ -67,9 +67,9 @@ for page in pdf.pages:
     if table is not None:
         tables = union_no_duplicates(tables, table)
 
-# Add another column for 'As of' and fill it with ddLLuuuu
+# Add another column for 'As of' and fill it with dmY
 tables_df = convert_row_list_to_pandas_DataFrame(tables)
-tables_df['As of'] = ddLLuuuu
+tables_df['As of'] = dmY
 
 # Convert back to JSON-serializable format
 tables_json = tables_df.to_dict('records')
