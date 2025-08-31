@@ -181,9 +181,14 @@ else
   F_newest_local=$(jq -r '.newest_local' $METADATA_FILE)
   echo "Latest local date: $F_newest_local" | tee -a $LOG_FILE
 
+  # Start query from 1 month after newest local
+  F_next_month=$(date -d "$F_newest_local + 1 day" +"%F")
+  F_next_month=$(date -d "$F_next_month + 1 month" +"%F")
+  F_next_month=$(date -d "$F_next_month - 1 day" +"%F")
+
   # Query data since latest month in local file
   echo "Checking for new entries..." | tee -a $LOG_FILE
-  if fetch_api_data "${F_newest_local:8:2}${F_newest_local:5:2}${F_newest_local:0:4}"; then
+  if fetch_api_data "${F_next_month:8:2}${F_next_month:5:2}${F_next_month:0:4}"; then
 
     # Filter API data for entries newer than newest_local
     new_entries=$(jq --arg F_newest_local "$F_newest_local" '

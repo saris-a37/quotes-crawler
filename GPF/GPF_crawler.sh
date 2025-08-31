@@ -27,7 +27,7 @@ MONTHLY_FILE="gpf_data_monthly.json"
 METADATA_FILE="gpf_data_metadata.json"
 
 # Log
-LOG_FILE="gpf_crawler.log"
+LOG_FILE="GPF_crawler.log"
 
 echo "$(date +%FT%H:%M:%S%:z)" >> $LOG_FILE
 
