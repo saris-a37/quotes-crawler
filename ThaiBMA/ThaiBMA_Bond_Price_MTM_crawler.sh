@@ -28,20 +28,26 @@ MONTHLY_PDF="thaibma_bond_price_mtm_data_monthly.pdf"
 # Metadata
 METADATA_FILE="thaibma_bond_price_mtm_data_metadata.json"
 
-echo "Starting ThaiBMA Bond Price MTM data crawler..."
+# Log
+LOG_FILE="ThaiBMA_Bond_Price_MTM_crawler.log"
+
+echo "$(date +%FT%H:%M:%S%:z)" >> $LOG_FILE
+
+echo "Starting ThaiBMA Bond Price MTM data crawler..." | tee -a $LOG_FILE
 
 # Check dependencies
 dependencies=("jq" "python")
 dependency_errors=0
 for dependency in "${dependencies[@]}"; do
   if ! command -v $dependency &> /dev/null; then
-    echo "Error: $dependency is required but not installed. Please install $dependency first."
+    echo "Error: $dependency is required but not installed. Please install $dependency first." | tee -a $LOG_FILE
+    notify-send "ThaiBMA Bond Price MTM crawler" "Error: $dependency is required but not installed. Please install $dependency first."
     dependency_errors+=1
   fi
-  if [[ dependency_errors -ne 0 ]]; then
-    exit 1
-  fi
 done
+if [[ dependency_errors -ne 0 ]]; then
+  exit 1
+fi
 
 # Function to fetch API data with error checking
 fetch_api_data() {
@@ -74,7 +80,7 @@ fetch_api_data() {
   unset dmY
   success_counter=0
   for dmY in "${!API_URLs[@]}"; do
-    echo "Fetching $dmY data from API..."
+    echo "Fetching $dmY data from API..." | tee -a $LOG_FILE
     if curl -s "${API_URLs[$dmY]}" > "$MONTHLY_PDF"; then
       # Check if response is valid PDF
       if [[ $(head -c 4 "$MONTHLY_PDF") == "%PDF" ]]; then
@@ -84,22 +90,22 @@ fetch_api_data() {
           cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
           jq -s add "$TEMP_TEMP_JSON" "$MONTHLY_JSON" > "$TEMP_JSON"
           if [ $? -eq 0 ]; then
-            echo "PDF fetched, converted, & merged to $TEMP_JSON successfully"
+            echo "PDF fetched, converted, & merged to $TEMP_JSON successfully" | tee -a $LOG_FILE
             success_counter+=1
           else
-            echo "Error: Failed to merge fetched data to $TEMP_JSON"
+            echo "Error: Failed to merge fetched data to $TEMP_JSON" | tee -a $LOG_FILE
             rm -f "$MONTHLY_PDF" "$MONTHLY_JSON" "$TEMP_TEMP_FILE"
           fi
         else
-          echo "Error: PDF fetched but conversion to JSON failed"
+          echo "Error: PDF fetched but conversion to JSON failed" | tee -a $LOG_FILE
           rm -f "$MONTHLY_PDF" "$MONTHLY_JSON"
         fi
       else
-        echo "Error: Failed to fetch PDF"
+        echo "Error: Failed to fetch PDF" | tee -a $LOG_FILE
         rm -f "$MONTHLY_PDF" "$MONTHLY_JSON"
       fi
     else
-      echo "Error: Failed to fetch PDF"
+      echo "Error: Failed to fetch PDF" | tee -a $LOG_FILE
       rm -f "$MONTHLY_PDF" "$MONTHLY_JSON"
     fi
   done
@@ -116,25 +122,29 @@ find_newest_local () {
 
   # Get newest local date (convert dd/m/Y to Y-m-dd for comparison)
   local F_newest_local=$(jq -r '[.[] | .["As of"] | (.[4:8] + "-" + .[2:4] + "-" + .[0:2])] | sort | .[-1]' "$LOCAL_JSON")
-  echo "Latest local date: $F_newest_local"
+  echo "Latest local date: $F_newest_local" | tee -a $LOG_FILE
 
   if [ ! -f "$METADATA_FILE" ]; then
     jq -n --arg nl "$F_newest_local" '{"newest_local": $nl}' > $METADATA_FILE
     if [ $? -eq 0 ]; then
-      echo "No metadata file existed, successfully created new metadata file with updated value(s)"
+      echo "No metadata file existed, successfully created new metadata file with updated value(s)" | tee -a $LOG_FILE
+      notify-send "ThaiBMA Bond Price MTM crawler" "No metadata file existed, successfully created new metadata file with updated value(s)"
       return 0
     else
-      echo "Error: No metadata file existed, failed to create new metadata file"
+      echo "Error: No metadata file existed, failed to create new metadata file" | tee -a $LOG_FILE
+      notify-send "ThaiBMA Bond Price MTM crawler" "Error: No metadata file existed, failed to create new metadata file"
       return 1
     fi
   else
     jq -n --arg nl "$F_newest_local" '.newest_local = $nl' $METADATA_FILE > "${METADATA_FILE}.tmp"
     if [ $? -eq 0 ]; then
       mv "${METADATA_FILE}.tmp" "$METADATA_FILE"
-      echo "Successfully updated metadata file"
+      echo "Successfully updated metadata file" | tee -a $LOG_FILE
+      notify-send "ThaiBMA Bond Price MTM crawler" "Successfully updated metadata file"
       return 0
     else
-      echo "Error: Failed to update metadata file"
+      echo "Error: Failed to update metadata file" | tee -a $LOG_FILE
+      notify-send "ThaiBMA Bond Price MTM crawler" "Error: Failed to update metadata file"
       rm -f "${METADATA_FILE}.tmp"
       return 1
     fi
@@ -143,34 +153,36 @@ find_newest_local () {
 
 # Check if this is the first run
 if [ ! -f "$LOCAL_JSON" ]; then
-  echo "Local file doesn't exist. Creating initial file with all API data..."
+  echo "Local file doesn't exist. Creating initial file with all API data..." | tee -a $LOG_FILE
 
   # Initiate local file with entire data since 31082009 for the first run
   if fetch_api_data "31082009"; then
     mv "$TEMP_JSON" "$LOCAL_JSON"
     entry_count=$(jq 'length' "$LOCAL_JSON")
-    echo "Successfully created $LOCAL_JSON with $entry_count entries"
+    echo "Successfully created $LOCAL_JSON with $entry_count entries" | tee -a $LOG_FILE
+    notify-send "ThaiBMA Bond Price MTM crawler" "Successfully created $LOCAL_JSON with $entry_count entries"
 
     # Find and update date of newest local entry
     find_newest_local
 
   else
-    echo "Error: Failed to create initial file"
+    echo "Error: Failed to create initial file" | tee -a $LOG_FILE
+    notify-send "ThaiBMA Bond Price MTM crawler" "Error: Failed to create initial file"
     exit 1
   fi
 else
 
-  echo "Local file exists."
+  echo "Local file exists." | tee -a $LOG_FILE
 
   # Query stored date of newest local entry, find if not existed
   if [ ! -f "$METADATA_FILE" ]; then
     find_newest_local
   fi
   F_newest_local=$(jq -r '.newest_local' $METADATA_FILE)
-  echo "Latest local date: $F_newest_local"
+  echo "Latest local date: $F_newest_local" | tee -a $LOG_FILE
 
   # Query data since latest month in local file
-  echo "Checking for new entries..."
+  echo "Checking for new entries..." | tee -a $LOG_FILE
   if fetch_api_data "${F_newest_local:8:2}${F_newest_local:5:2}${F_newest_local:0:4}"; then
 
     # Filter API data for entries newer than newest_local
@@ -181,37 +193,41 @@ else
     ' "$TEMP_JSON")
 
     if [ "$new_count" -gt 0 ]; then
-      echo "Found $new_count new entries"
+      echo "Found $new_count new entries" | tee -a $LOG_FILE
 
       # Merge with existing data
       jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_JSON" > "${LOCAL_JSON}.tmp"
 
       if [ $? -eq 0 ]; then
         mv "${LOCAL_JSON}.tmp" "$LOCAL_JSON"
-        echo "Successfully added $new_count new entries to $LOCAL_JSON"
+        echo "Successfully added $new_count new entries to $LOCAL_JSON" | tee -a $LOG_FILE
+        notify-send "ThaiBMA Bond Price MTM crawler" "Successfully added $new_count new entries to $LOCAL_JSON"
 
         # Show total count
         total_count=$(jq 'length' "$LOCAL_JSON")
-        echo "Total entries in $LOCAL_JSON: $total_count"
+        echo "Total entries in $LOCAL_JSON: $total_count" | tee -a $LOG_FILE
 
         # Find and update date of newest local entry
         find_newest_local
 
       else
-        echo "Error: Failed to merge new entries"
+        echo "Error: Failed to merge new entries" | tee -a $LOG_FILE
+        notify-send "ThaiBMA Bond Price MTM crawler" "Error: Failed to merge new entries"
         rm -f "${LOCAL_JSON}.tmp"
         exit 1
       fi
     else
-      echo "No new entries found. Local file is up to date."
+      echo "No new entries found. Local file is up to date." | tee -a $LOG_FILE
+      notify-send "ThaiBMA Bond Price MTM crawler" "No new entries found. Local file is up to date."
     fi
   else
-    echo "Error: fetch_api_data encountered error"
+    echo "Error: fetch_api_data encountered error" | tee -a $LOG_FILE
+    notify-send "ThaiBMA Bond Price MTM crawler" "Error: fetch_api_data encountered error"
     exit 1
   fi
 fi
 
-echo "ThaiBMA Bond Price MTM data crawler completed successfully!"
+echo "ThaiBMA Bond Price MTM data crawler completed successfully!" | tee -a $LOG_FILE
 
 # Clean up temporary files
 rm -f "$MONTHLY_JSON" "$MONTHLY_PDF" "$TEMP_JSON" "$TEMP_TEMP_JSON"

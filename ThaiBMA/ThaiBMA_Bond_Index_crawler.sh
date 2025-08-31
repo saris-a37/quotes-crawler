@@ -35,6 +35,9 @@ DAILY_FILE="${FILE_PREFIX[$INDEX]}_data_daily.json"
 # Metadata
 METADATA_FILE="${FILE_PREFIX[$INDEX]}_data_metadata.json"
 
+# Log
+LOG_FILE="ThaiBMA_Bond_Index_crawler.log"
+
 # ThaiBMA API URLs
 API_URL=
 declare -A API_URLs
@@ -97,11 +100,14 @@ RANGE_FILE="${FILE_PREFIX[$INDEX]}_range.json"
 F_first=""
 F_latest=""
 
-echo "Starting ThaiBMA data crawler for $INDEX..."
+echo "$(date +%FT%H:%M:%S%:z)" >> $LOG_FILE
+
+echo "Starting ThaiBMA data crawler for $INDEX..." | tee -a $LOG_FILE
 
 # Check if jq is installed
 if ! command -v jq &> /dev/null; then
-  echo "Error: jq is required but not installed. Please install jq first."
+  echo "Error: jq is required but not installed. Please install jq first." | tee -a $LOG_FILE
+  notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: jq is required but not installed. Please install jq first."
   exit 1
 fi
 
@@ -115,7 +121,7 @@ fetch_api_range() {
     rm -f $RANGE_FILE
     return 0
   else
-    echo "Error: failed to fetch API data range"
+    echo "Error: failed to fetch API data range" | tee -a $LOG_FILE
     rm -f $RANGE_FILE
     return 1
   fi
@@ -148,7 +154,7 @@ fetch_api_data() {
   unset F
   success_counter=0
   for F in "${!API_URLs[@]}"; do
-    echo "Fetching $F data from API..."
+    echo "Fetching $F data from API..." | tee -a $LOG_FILE
     if curl -s "${API_URLs[$F]}" > "$DAILY_FILE"; then
       # Check if response is valid JSON
       if jq empty "$DAILY_FILE" 2>/dev/null; then
@@ -158,28 +164,28 @@ fetch_api_data() {
             cp "$TEMP_FILE" "$TEMP_TEMP_FILE"
             jq -s add "$TEMP_TEMP_FILE" "$DAILY_FILE" > "$TEMP_FILE"
             if [ $? -eq 0 ]; then
-              echo "API data fetched & merged to $TEMP_FILE successfully"
+              echo "API data fetched & merged to $TEMP_FILE successfully" | tee -a $LOG_FILE
               success_counter+=1
             else
-              echo "Error: Failed to merge fetched data to $TEMP_FILE"
+              echo "Error: Failed to merge fetched data to $TEMP_FILE" | tee -a $LOG_FILE
               rm -f "$DAILY_FILE" "$TEMP_TEMP_FILE"
             fi
             ;;
           '"object"')
-            echo 'Error: API returned JSON with no data (type="object")'
+            echo 'Error: API returned JSON with no data (type="object")' | tee -a $LOG_FILE
             rm -f "$DAILY_FILE"
             ;;
           *)
-            echo 'Error: API returned JSON with no data (type=other)'
+            echo 'Error: API returned JSON with no data (type=other)' | tee -a $LOG_FILE
             rm -f "$DAILY_FILE"
             ;;
         esac
       else
-        echo "Error: API returned invalid JSON"
+        echo "Error: API returned invalid JSON" | tee -a $LOG_FILE
         rm -f "$DAILY_FILE"
       fi
     else
-      echo "Error: Failed to fetch data from API"
+      echo "Error: Failed to fetch data from API" | tee -a $LOG_FILE
       rm -f "$DAILY_FILE"
     fi
   done
@@ -201,25 +207,29 @@ find_newest_local () {
   else
     local F_newest_local=$(jq -r '[.[] | .Asof | split("T") as [$F, $T] | $F] | sort | .[-1]' "$LOCAL_FILE")
   fi
-  echo "Latest local date: $F_newest_local"
+  echo "Latest local date: $F_newest_local" | tee -a $LOG_FILE
 
   if [ ! -f "$METADATA_FILE" ]; then
     jq -n --arg nl "$F_newest_local" '{"newest_local": $nl}' > $METADATA_FILE
     if [ $? -eq 0 ]; then
-      echo "No metadata file existed, successfully created new metadata file with updated value(s)"
+      echo "No metadata file existed, successfully created new metadata file with updated value(s)" | tee -a $LOG_FILE
+      notify-send "ThaiBMA $INDEX Bond Index crawler" "No metadata file existed, successfully created new metadata file with updated value(s)"
       return 0
     else
-      echo "Error: No metadata file existed, failed to create new metadata file"
+      echo "Error: No metadata file existed, failed to create new metadata file" | tee -a $LOG_FILE
+      notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: No metadata file existed, failed to create new metadata file"
       return 1
     fi
   else
     jq -n --arg nl "$F_newest_local" '.newest_local = $nl' $METADATA_FILE > "${METADATA_FILE}.tmp"
     if [ $? -eq 0 ]; then
       mv "${METADATA_FILE}.tmp" "$METADATA_FILE"
-      echo "Successfully updated metadata file"
+      echo "Successfully updated metadata file" | tee -a $LOG_FILE
+      notify-send "ThaiBMA $INDEX Bond Index crawler" "Successfully updated metadata file"
       return 0
     else
-      echo "Error: Failed to update metadata file"
+      echo "Error: Failed to update metadata file" | tee -a $LOG_FILE
+      notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: Failed to update metadata file"
       rm -f "${METADATA_FILE}.tmp"
       return 1
     fi
@@ -228,46 +238,50 @@ find_newest_local () {
 
 # Fetch API data range
 if fetch_api_range; then
-  echo "Successfully fetched API data range: $F_first to $F_latest"
+  echo "Successfully fetched API data range: $F_first to $F_latest" | tee -a $LOG_FILE
+  notify-send "ThaiBMA $INDEX Bond Index crawler" "Successfully fetched API data range: $F_first to $F_latest"
 else
-  echo "Error, failed to fetch API data range"
+  echo "Error, failed to fetch API data range" | tee -a $LOG_FILE
+  notify-send "ThaiBMA $INDEX Bond Index crawler" "Error, failed to fetch API data range"
   exit 1
 fi
 
 # Check if this is the first run
 if [ ! -f "$LOCAL_FILE" ]; then
-  echo "Local file doesn't exist. Creating initial file with all API data..."
+  echo "Local file doesn't exist. Creating initial file with all API data..." | tee -a $LOG_FILE
 
   # Initiate local file with entire data since F_first for the first run
   if fetch_api_data $F_first; then
     mv "$TEMP_FILE" "$LOCAL_FILE"
     entry_count=$(jq 'length' "$LOCAL_FILE")
-    echo "Successfully created $LOCAL_FILE with $entry_count entries"
+    echo "Successfully created $LOCAL_FILE with $entry_count entries" | tee -a $LOG_FILE
+    notify-send "ThaiBMA $INDEX Bond Index crawler" "Successfully created $LOCAL_FILE with $entry_count entries"
 
     # Find and update date of newest local entry
     find_newest_local
 
   else
-    echo "Error: Failed to create initial file"
+    echo "Error: Failed to create initial file" | tee -a $LOG_FILE
+    notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: Failed to create initial file"
     exit 1
   fi
 
 else
 
-  echo "Local file exists."
+  echo "Local file exists." | tee -a $LOG_FILE
 
   # Query stored date of newest local entry, find if not exist
   if [ ! -f "$METADATA_FILE" ]; then
     find_newest_local
   fi
   F_newest_local=$(jq -r '.newest_local' $METADATA_FILE)
-  echo "Latest local date: $F_newest_local"
+  echo "Latest local date: $F_newest_local" | tee -a $LOG_FILE
 
   # Check if there is newer data in the API
   if [[ "$F_latest" > "$F_newest_local" ]]; then
 
     # Query data since latest day in local file
-    echo "Checking for new entries..."
+    echo "Checking for new entries..." | tee -a $LOG_FILE
     if fetch_api_data $F_newest_local; then
 
       # Filter API data for entries newer than newest_local; ThaiBMA API uses ISO 8601 date & time format. No reformatting is necessary.
@@ -281,40 +295,45 @@ else
       new_count=$(echo "$new_entries" | jq 'length')
 
       if [ "$new_count" -gt 0 ]; then
-        echo "Found $new_count new entries"
+        echo "Found $new_count new entries" | tee -a $LOG_FILE
 
         # Merge with existing data
         jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
 
         if [ $? -eq 0 ]; then
           mv "${LOCAL_FILE}.tmp" "$LOCAL_FILE"
-          echo "Successfully added $new_count new entries to $LOCAL_FILE"
+          echo "Successfully added $new_count new entries to $LOCAL_FILE" | tee -a $LOG_FILE
+          notify-send "ThaiBMA $INDEX Bond Index crawler" "Successfully added $new_count new entries to $LOCAL_FILE"
 
           # Show total count
           total_count=$(jq 'length' "$LOCAL_FILE")
-          echo "Total entries in $LOCAL_FILE: $total_count"
+          echo "Total entries in $LOCAL_FILE: $total_count" | tee -a $LOG_FILE
 
           # Find and update date of newest local entry
           find_newest_local
 
         else
-          echo "Error: Failed to merge new entries"
+          echo "Error: Failed to merge new entries" | tee -a $LOG_FILE
+          notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: Failed to merge new entries"
           rm -f "${LOCAL_FILE}.tmp"
           exit 1
         fi
       else
-        echo "No new entries found. Local file is up to date."
+        echo "No new entries found. Local file is up to date." | tee -a $LOG_FILE
+        notify-send "ThaiBMA $INDEX Bond Index crawler" "No new entries found. Local file is up to date."
       fi
     else
-      echo "Error: Failed to fetch API data"
+      echo "Error: Failed to fetch API data" | tee -a $LOG_FILE
+      notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: Failed to fetch API data"
       exit 1
     fi
   else
-    echo "No newer data in API. Local file is up to date"
+    echo "No newer data in API. Local file is up to date" | tee -a $LOG_FILE
+    notify-send "ThaiBMA $INDEX Bond Index crawler" "No newer data in API. Local file is up to date"
   fi
 fi
 
-echo "ThaiBMA Bond Index data crawler for $INDEX completed successfully!"
+echo "ThaiBMA Bond Index data crawler for $INDEX completed successfully!" | tee -a $LOG_FILE
 
 # Clean up temporary files
 rm -f "$DAILY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
