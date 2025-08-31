@@ -36,7 +36,7 @@ echo "$(date +%FT%H:%M:%S%:z)" >> $LOG_FILE
 echo "Starting ThaiBMA Bond Price MTM data crawler..." | tee -a $LOG_FILE
 
 # Check dependencies
-dependencies=("jq" "python")
+dependencies=("jq" "python" "sed" "pdftk")
 dependency_errors=0
 for dependency in "${dependencies[@]}"; do
   if ! command -v $dependency &> /dev/null; then
@@ -84,7 +84,16 @@ fetch_api_data() {
     if curl -s "${API_URLs[$dmY]}" > "$MONTHLY_PDF"; then
       # Check if response is valid PDF
       if [[ $(head -c 4 "$MONTHLY_PDF") == "%PDF" ]]; then
+
+        # Uncompress PDF
+        pdftk $MONTHLY_PDF output uncompressed.pdf uncompress && mv uncompressed.pdf $MONTHLY_PDF
+        # Prune 'Source :ThaiBMA' watermark from PDF
+        sed -e "s/Source :ThaiBMA/ /" $MONTHLY_PDF > unwatermarked.pdf && mv unwatermarked.pdf $MONTHLY_PDF
+        # Repair PDF
+        pdftk $MONTHLY_PDF output fixed.pdf && mv fixed.pdf $MONTHLY_PDF
+        # Convert PDF tables to JSON
         python ThaiBMA_Bond_Price_MTM_PDF_table_to_JSON.py $MONTHLY_PDF $dmY
+
         # Check if PDF is converted to valid JSON
         if jq empty "$MONTHLY_JSON" 2>/dev/null; then
           cp "$TEMP_JSON" "$TEMP_TEMP_JSON"
