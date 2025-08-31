@@ -42,6 +42,8 @@ jobs:
       # Install Dependencies
       - name: Install Dependencies
         run: |
+          sudo apt install sed
+          sudo apt install pdftk
           python -m pip install --upgrade pip
           python3 -m pip install pandas
           python3 -m pip install pdfplumber --break-system-packages
