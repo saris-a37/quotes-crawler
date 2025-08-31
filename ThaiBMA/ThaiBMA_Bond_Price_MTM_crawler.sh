@@ -168,6 +168,7 @@ if [ ! -f "$LOCAL_JSON" ]; then
   else
     echo "Error: Failed to create initial file" | tee -a $LOG_FILE
     notify-send "ThaiBMA Bond Price MTM crawler" "Error: Failed to create initial file"
+    rm -f "$MONTHLY_JSON" "$MONTHLY_PDF" "$TEMP_JSON" "$TEMP_TEMP_JSON"
     exit 1
   fi
 else
@@ -218,7 +219,7 @@ else
       else
         echo "Error: Failed to merge new entries" | tee -a $LOG_FILE
         notify-send "ThaiBMA Bond Price MTM crawler" "Error: Failed to merge new entries"
-        rm -f "${LOCAL_JSON}.tmp"
+        rm -f "${LOCAL_JSON}.tmp" "$MONTHLY_JSON" "$MONTHLY_PDF" "$TEMP_JSON" "$TEMP_TEMP_JSON"
         exit 1
       fi
     else
@@ -228,6 +229,7 @@ else
   else
     echo "Error: fetch_api_data encountered error" | tee -a $LOG_FILE
     notify-send "ThaiBMA Bond Price MTM crawler" "Error: fetch_api_data encountered error"
+    rm -f "$MONTHLY_JSON" "$MONTHLY_PDF" "$TEMP_JSON" "$TEMP_TEMP_JSON"
     exit 1
   fi
 fi

@@ -263,6 +263,7 @@ if [ ! -f "$LOCAL_FILE" ]; then
   else
     echo "Error: Failed to create initial file" | tee -a $LOG_FILE
     notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: Failed to create initial file"
+    rm -f "$DAILY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
     exit 1
   fi
 
@@ -315,7 +316,7 @@ else
         else
           echo "Error: Failed to merge new entries" | tee -a $LOG_FILE
           notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: Failed to merge new entries"
-          rm -f "${LOCAL_FILE}.tmp"
+          rm -f "${LOCAL_FILE}.tmp" "$DAILY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
           exit 1
         fi
       else
@@ -325,6 +326,7 @@ else
     else
       echo "Error: Failed to fetch API data" | tee -a $LOG_FILE
       notify-send "ThaiBMA $INDEX Bond Index crawler" "Error: Failed to fetch API data"
+      rm -f "$DAILY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
       exit 1
     fi
   else
