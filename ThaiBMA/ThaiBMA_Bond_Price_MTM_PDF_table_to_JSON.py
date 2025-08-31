@@ -16,14 +16,13 @@ def convert_row_list_to_pandas_DataFrame(data):
 
     # Clean column names
     df.columns = df.columns.str.replace('\n', ' ').str.strip()
+    df = df.rename(columns={'Clean Price': 'Clean Price (percent)'})
 
     # Convert numeric columns
-    # Commented out because it produces NaN result on error even when run with errors='ignore' on pandas version below 2.2, i.e., before ignore option is deprecated
-    '''
-    numeric_columns = ['Last Exec. Yield', 'Market Yield', 'Clean Price', 'AI %']
+    numeric_columns = ['Last Exec. Yield', 'Market Yield', 'Clean Price (percent)', 'AI %']
     for col in numeric_columns:
-        df[col] = pandas.to_numeric(df[col], errors='ignore')
-    '''
+        df[col] = pandas.to_numeric(df[col], errors='coerce')
+
 
     # Replace unescaped new line to avoid JSON parsing error
     df = df.replace(r'.\n', '', regex=True)
@@ -67,9 +66,14 @@ for page in pdf.pages:
     if table is not None:
         tables = union_no_duplicates(tables, table)
 
-# Add another column for 'As of' and fill it with dmY
+# Add columns for 'As of' and fill it with dmY & for per mille Clean Price
 tables_df = convert_row_list_to_pandas_DataFrame(tables)
 tables_df['As of'] = dmY
+tables_df['Clean Price (per mille)'] = tables_df['Clean Price (percent)'] * 10
+
+# Clean up NaN & alike as these will cause JSON parsing error, replace with None to be converted to JSON Null
+tables_df.fillna("None", inplace=True)
+tables_df = tables_df.replace("None", None)
 
 # Convert back to JSON-serializable format
 tables_json = tables_df.to_dict('records')
