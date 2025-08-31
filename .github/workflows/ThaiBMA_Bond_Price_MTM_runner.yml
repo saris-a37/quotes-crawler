@@ -5,8 +5,8 @@ name: ThaiBMA Bond Price MTM Runner
 # Controls when the workflow will run
 on:
   # Automatically run workflow with cron schedule
-  schedule:
-    - cron: '0 8 * * 2-6'
+  #schedule:
+    #- cron: '0 8 * * 2-6'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
