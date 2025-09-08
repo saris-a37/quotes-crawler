@@ -69,7 +69,7 @@ for page in pdf.pages:
 # Add columns for 'As of' and fill it with dmY & for per mille Clean Price
 tables_df = convert_row_list_to_pandas_DataFrame(tables)
 tables_df['As of'] = dmY
-tables_df['Clean Price (per mille)'] = tables_df['Clean Price (percent)'] * 10
+# tables_df['Clean Price (per mille)'] = tables_df['Clean Price (percent)'] * 10
 
 # Clean up NaN & alike as these will cause JSON parsing error, replace with None to be converted to JSON Null
 tables_df.fillna("None", inplace=True)
