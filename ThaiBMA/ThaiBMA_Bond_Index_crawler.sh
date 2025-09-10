@@ -31,6 +31,7 @@ LOCAL_FILE="${FILE_PREFIX[$INDEX]}_data.json"
 TEMP_FILE="${FILE_PREFIX[$INDEX]}_data_temp.json"
 TEMP_TEMP_FILE="${FILE_PREFIX[$INDEX]}_data_temp_temp.json"
 DAILY_FILE="${FILE_PREFIX[$INDEX]}_data_daily.json"
+NEW_ENTRIES_FILE="${FILE_PREFIX[$INDEX]}_data_new_entries.json"
 
 # Metadata
 METADATA_FILE="${FILE_PREFIX[$INDEX]}_data_metadata.json"
@@ -291,6 +292,7 @@ else
       else
         new_entries=$(jq --arg F_newest_local "$F_newest_local" '[.[] | select((.Asof | split("T") as [$F, $T] | $F) > $F_newest_local)]' "$TEMP_FILE")
       fi
+      echo $new_entries > $NEW_ENTRIES_FILE
 
       # Check if we found new entries
       new_count=$(echo "$new_entries" | jq 'length')
@@ -299,7 +301,8 @@ else
         echo "Found $new_count new entries" | tee -a $LOG_FILE
 
         # Merge with existing data
-        jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
+        #jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
+        jq --slurpfile new_entries $NEW_ENTRIES_FILE '. + $new_entries[0]' "$LOCAL_FILE" > "${LOCAL_FILE}.tmp"
 
         if [ $? -eq 0 ]; then
           mv "${LOCAL_FILE}.tmp" "$LOCAL_FILE"
@@ -338,4 +341,4 @@ fi
 echo "ThaiBMA Bond Index data crawler for $INDEX completed successfully!" | tee -a $LOG_FILE
 
 # Clean up temporary files
-rm -f "$DAILY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE"
+rm -f "$DAILY_FILE" "$TEMP_FILE" "$TEMP_TEMP_FILE" "$NEW_ENTRIES_FILE"
