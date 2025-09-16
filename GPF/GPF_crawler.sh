@@ -101,7 +101,7 @@ fetch_api_data() {
 find_newest_local () {
 
   # Get newest local date (convert dd/m/Y HH:mm:ss to Y-m-dd HH:mm:ss for comparison)
-  local F_newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$dd, $m, $Y] | "\($Y)-\($m)-\($dd)"] | sort | .[-1]' "$LOCAL_FILE")
+  local F_newest_local=$(jq -r '[.[] | .LAUNCH_DATE | split(" ") as [$date, $time] | ($date | split("/")) as [$d, $m, $Y] | "\($Y)-\($m)-\($d)"] | sort | .[-1]' "$LOCAL_FILE")
   echo "Latest local date: $F_newest_local" | tee -a $LOG_FILE
 
   if [ ! -f "$METADATA_FILE" ]; then
