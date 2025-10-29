@@ -206,6 +206,8 @@ else
         (.["As of"] | (.[4:8] + "-" + .[2:4] + "-" + .[0:2])) > $F_newest_local
       )]
     ' "$TEMP_JSON")
+    
+    new_count=$(echo "$new_entries" | jq 'length')
 
     if [ "$new_count" -gt 0 ]; then
       echo "Found $new_count new entries" | tee -a $LOG_FILE
