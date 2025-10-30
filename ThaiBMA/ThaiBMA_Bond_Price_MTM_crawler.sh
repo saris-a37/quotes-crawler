@@ -24,6 +24,7 @@ TEMP_JSON="thaibma_bond_price_mtm_data_temp.json"
 TEMP_TEMP_JSON="thaibma_bond_price_mtm_data_temp_temp.json"
 MONTHLY_JSON="thaibma_bond_price_mtm_data_monthly.json"
 MONTHLY_PDF="thaibma_bond_price_mtm_data_monthly.pdf"
+NEW_ENTRIES_FILE="thaibma_bond_price_mtm_data_new_entries.json"
 
 # Metadata
 METADATA_FILE="thaibma_bond_price_mtm_data_metadata.json"
@@ -207,13 +208,16 @@ else
       )]
     ' "$TEMP_JSON")
     
+    echo $new_entries > $NEW_ENTRIES_FILE
+    
     new_count=$(echo "$new_entries" | jq 'length')
 
     if [ "$new_count" -gt 0 ]; then
       echo "Found $new_count new entries" | tee -a $LOG_FILE
 
       # Merge with existing data
-      jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_JSON" > "${LOCAL_JSON}.tmp"
+      #jq --argjson new_entries "$new_entries" '. + $new_entries' "$LOCAL_JSON" > "${LOCAL_JSON}.tmp"
+      jq --slurpfile new_entries $NEW_ENTRIES_FILE '. + $new_entries[0]' "$LOCAL_JSON" > "${LOCAL_JSON}.tmp"
 
       if [ $? -eq 0 ]; then
         mv "${LOCAL_JSON}.tmp" "$LOCAL_JSON"
@@ -248,4 +252,4 @@ fi
 echo "ThaiBMA Bond Price MTM data crawler completed successfully!" | tee -a $LOG_FILE
 
 # Clean up temporary files
-rm -f "$MONTHLY_JSON" "$MONTHLY_PDF" "$TEMP_JSON" "$TEMP_TEMP_JSON"
+rm -f "$MONTHLY_JSON" "$MONTHLY_PDF" "$TEMP_JSON" "$TEMP_TEMP_JSON" "$NEW_ENTRIES_FILE"
