@@ -2,36 +2,35 @@
 
 # BOT Exchange Rate Fetcher
 # Fetches DAILY_AVG_EXG_RATE from the Bank of Thailand API and keeps a local
-# per-currency-pair JSON file up to date. Automatically chunks requests into
-# <=31-day windows (BOT's API limit) and backfills fully in one run.
+# per-currency-pair JSON file up to date for one or more currencies.
+# Automatically chunks requests into <=31-day windows (BOT's API limit),
+# backfills fully in one run, and pauses when the shared rate limit is hit.
 #
-# Usage: ./bot_fx_fetch.sh USD
+# Usage: ./bot_fx_fetch.sh USD [EUR JPY ...]
 
-CURRENCY="$1"
-
-if [ -z "$CURRENCY" ]; then
-    echo "Usage: $0 CURRENCYCODE"
-    echo "Example: $0 USD"
+if [ "$#" -eq 0 ]; then
+    echo "Usage: $0 CURRENCYCODE [CURRENCYCODE ...]"
+    echo "Example: $0 USD EUR"
     exit 1
 fi
 
-CURRENCY=$(echo "$CURRENCY" | tr '[:lower:]' '[:upper:]')
-
 # --- Config ---
 API_KEY_FILE="$HOME/.config/bot_api/credentials"
-DATA_DIR="$HOME/Documents/Git/quotes-crawler/BOT"
-LOCAL_FILE="${DATA_DIR}/${CURRENCY}THB.json"
+DATA_DIR="/home/tsaris/Documents/Git/quotes-crawler/BOT"
 LOG_FILE="${DATA_DIR}/BOT_fx_daily_crawler.log"
 BASE_URL="https://gateway.api.bot.or.th/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/"
-DEFAULT_START_PERIOD="2020-01-01"  # used only on the very first run for a currency; adjust to taste
+DEFAULT_START_PERIOD="2002-01-01"  # used only on the very first run for a currency; adjust to taste
 MAX_WINDOW_DAYS=31                 # BOT's API rejects ranges longer than this
+CALL_LIMIT=200                     # BOT's API rate limit: 200 calls/hour, shared across all currencies
+CALL_WINDOW_SECONDS=3600
+call_count=0
 
 mkdir -p "$DATA_DIR"
 
 # --- Log to both terminal and the log file ---
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-echo "=== $(date '+%F %T') - Starting fetch for $CURRENCY ==="
+echo "=== $(date '+%F %T') - Starting fetch for: $* ==="
 
 # --- Check dependencies ---
 if ! command -v jq &> /dev/null; then
@@ -39,7 +38,7 @@ if ! command -v jq &> /dev/null; then
     exit 1
 fi
 
-# --- Load API key ---
+# --- Load API key (shared across all currencies) ---
 if [ ! -f "$API_KEY_FILE" ]; then
     echo "Error: API key file not found at $API_KEY_FILE"
     echo "Create it with:"
@@ -50,21 +49,18 @@ if [ ! -f "$API_KEY_FILE" ]; then
 fi
 API_KEY=$(tr -d '[:space:]' < "$API_KEY_FILE")
 
-# --- Determine overall start_period ---
-if [ -f "$LOCAL_FILE" ]; then
-    start_period=$(jq -r '[.[] | .period] | sort | .[-1]' "$LOCAL_FILE")
-    echo "Local file found ($LOCAL_FILE). Fetching from last saved date: $start_period"
-else
-    start_period="$DEFAULT_START_PERIOD"
-    echo "No local file found. Fetching from default start date: $start_period"
-fi
-
-end_period=$(date -d "yesterday" +%F)  # exclude today: today's rate isn't final yet
-
-if [[ "$start_period" > "$end_period" ]]; then
-    echo "Already up to date (last saved date is $start_period)."
-    exit 0
-fi
+# --- Pause until the rate-limit window resets, with a live countdown ---
+wait_for_rate_limit() {
+    local remaining=$((CALL_WINDOW_SECONDS / 60))
+    echo "Rate limit reached ($CALL_LIMIT calls). Pausing for $remaining minute(s)..."
+    while [ "$remaining" -gt 0 ]; do
+        echo "  ...resuming in $remaining minute(s)"
+        sleep 60
+        remaining=$((remaining - 1))
+    done
+    echo "Resuming."
+    call_count=0
+}
 
 # --- Fetch one <=31-day window and merge it into the local file ---
 fetch_window() {
@@ -115,19 +111,58 @@ fetch_window() {
     fi
 }
 
-# --- Walk the full range in <=31-day windows ---
-current_start="$start_period"
-while [[ "$current_start" < "$end_period" || "$current_start" == "$end_period" ]]; do
-    window_end=$(date -d "$current_start +$((MAX_WINDOW_DAYS - 1)) days" +%F)
-    if [[ "$window_end" > "$end_period" ]]; then
-        window_end="$end_period"
+# --- Process a single currency: figure out its range and walk it in windows ---
+process_currency() {
+    CURRENCY=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+    LOCAL_FILE="${DATA_DIR}/${CURRENCY}THB.json"
+
+    echo "--- $CURRENCY ---"
+
+    local start_period
+    if [ -f "$LOCAL_FILE" ]; then
+        start_period=$(jq -r '[.[] | .period] | sort | .[-1]' "$LOCAL_FILE")
+        echo "Local file found ($LOCAL_FILE). Fetching from last saved date: $start_period"
+    else
+        start_period="$DEFAULT_START_PERIOD"
+        echo "No local file found. Fetching from default start date: $start_period"
     fi
 
-    fetch_window "$current_start" "$window_end" || exit 1
+    local end_period
+    end_period=$(date -d "yesterday" +%F)  # exclude today: today's rate isn't final yet
 
-    current_start=$(date -d "$window_end +1 day" +%F)
-    sleep 1  # be polite to the API between chunks
+    if [[ "$start_period" > "$end_period" ]]; then
+        echo "Already up to date (last saved date is $start_period)."
+        return 0
+    fi
+
+    local current_start="$start_period"
+    while [[ "$current_start" < "$end_period" || "$current_start" == "$end_period" ]]; do
+        local window_end
+        window_end=$(date -d "$current_start +$((MAX_WINDOW_DAYS - 1)) days" +%F)
+        if [[ "$window_end" > "$end_period" ]]; then
+            window_end="$end_period"
+        fi
+
+        fetch_window "$current_start" "$window_end" || exit 1
+        call_count=$((call_count + 1))
+
+        current_start=$(date -d "$window_end +1 day" +%F)
+
+        if [ "$call_count" -ge "$CALL_LIMIT" ]; then
+            wait_for_rate_limit
+        else
+            sleep 1  # be polite to the API between chunks
+        fi
+    done
+
+    local total_count
+    total_count=$(jq 'length' "$LOCAL_FILE")
+    echo "Done with $CURRENCY. $LOCAL_FILE now has $total_count entries."
+}
+
+# --- Run for every currency passed on the command line ---
+for currency_arg in "$@"; do
+    process_currency "$currency_arg"
 done
 
-total_count=$(jq 'length' "$LOCAL_FILE")
-echo "Done. $LOCAL_FILE now has $total_count entries."
+echo "=== $(date '+%F %T') - All currencies complete ==="
